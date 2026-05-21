@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   DESIGN SYSTEM (React-safe)
+========================= */
+
+:root {
+  --background:#f8fcfc ;
+  --background-sec:#a8b1d4 ;
+  --primary: #ffffff;
+  --secondary: #383a59;
+  --ring: #7988c0;
+  
+  --accent: #374ced;
+  --accent-hover: #374ced;
+  --tertiary: #0f4ccf;
+  --tertiary-hover: #ccccccd2;
+  --dot: #f94545;
+  --select: #cccccc;
+}
+
+[data-theme="dark"] {
+    --background:#ebe0d0;
+  --primary: #252525;
+  --secondary: #060b20;
+  --ring: #efefef;
+  --accent: #4357f0;
+  --accent-hover: #374ced;
+  --tertiary: #171c2f;
+  --tertiary-hover: #1f2740;
+  --dot: #f94545;
+  --select: #1a1d2e;
+}
+/* BODY */
+body {
+  @apply bg-[var(--primary)] text-[var(--ring)] leading-relaxed;
+}
+
+.card {
+  --start: 0;
+  position: relative;
+  z-index: 40;
+  overflow: hidden;
+  transition: border-color 1s ease-in-out;
+}
+
+.card::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  background: var(--tertiary);
+  background-attachment: fixed;
+  mask: linear-gradient(#0000, #0000),
+    conic-gradient(
+      from calc((var(--start) - 15) * 1deg),
+      #ffffff1f 0deg,
+      white,
+      #f3191900 100deg
+    );
+  mask-composite: intersect;
+  mask-clip: padding-box, border-box;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(10px);
+  filter: saturate(200);
+}
+.gradient-line {
+  width: 2px;
+  background: linear-gradient(
+    0deg,
+    rgba(65, 191, 170, 0) 0%,
+    #4357f0 50.51%,
+    #2fb8ba 80.91%
+  );
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+.card-border {
+    @apply border border-background bg-background-sec;
+  }
+  .timeline {
+    @apply absolute z-20 h-[110%] -top-10 w-14 md:w-28 bg-background;
+  }
+  
+.timeline-logo {
+  @apply md:size-12 size-8 bg-background flex-none lg:left-4 rounded-full flex justify-center 
+         items-center border border-transparent z-30 relative;
+}
+.timeline-wrapper {
+  @apply absolute z-10 top-0 lg:left-[440px] md:left-6 left-4 h-full flex flex-col items-center justify-start;
+}
+
