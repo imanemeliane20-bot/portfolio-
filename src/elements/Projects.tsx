@@ -140,12 +140,11 @@ const categoryLabels: Record<string, string> = {
 
 interface CarouselProps {
   items: typeof projects;
-  onSeeAll: () => void;
   activeTab: string;
   onTabChange: (cat: string) => void;
 }
 
-function Carousel3D({ items , onSeeAll , activeTab , onTabChange }: CarouselProps) {
+function Carousel3D({ items  , activeTab , onTabChange }: CarouselProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -578,7 +577,6 @@ const Projects = () => {
             >
               <Carousel3D
                 items={tabProjects}
-                onSeeAll={() => setShowAll(true)}
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
               />

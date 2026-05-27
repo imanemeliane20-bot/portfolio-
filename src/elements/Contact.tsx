@@ -1,4 +1,12 @@
 import { useState } from "react";
+import { BiLogoDribbble, BiLogoFacebook, BiLogoInstagram, BiLogoLinkedin } from "react-icons/bi";
+
+const socials = [
+  { icon: <BiLogoFacebook />, path: "" },
+  { icon: <BiLogoInstagram />, path: "" },
+  { icon: <BiLogoDribbble />, path: "" },
+  { icon: <BiLogoLinkedin />, path: "" },
+]
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -209,6 +217,14 @@ export default function Contact() {
           )}
         </div>
 
+      </div>
+       {/* Socials — desktop only */}
+      <div className='hidden lg:flex flex-col gap-6 absolute top-1/2 right-4 -translate-y-1/2 z-50'>
+        {socials.map((item, i) => (
+          <div key={i} className='bg-accent text-white hover:bg-accent-hover transition w-10 h-10 text-[22px] flex items-center justify-center rounded-full cursor-pointer'>
+            {item.icon}
+          </div>
+        ))}
       </div>
     </section>
   );

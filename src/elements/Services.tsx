@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { FolderCode, Server } from "lucide-react";
 
 // Custom hook for count-up animation

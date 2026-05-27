@@ -19,12 +19,12 @@ export default function Footer() {
         </p>
 
         {/* Nav links */}
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-3 lg:gap-6">
           {["Services",  "Experience","Projects", "Contact"].map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className="text-lg font-medium tracking-widest uppercase text-secondary hover:text-accent transition-colors duration-200"
+              className="text-base lg:text-lg font-medium tracking-widest uppercase text-secondary hover:text-accent transition-colors duration-200"
               style={{ fontFamily: "'Caveat',sans-serif" }}
             >
               {link}
