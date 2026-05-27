@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 const expCards = [
   {
     review:
-      "Zakariya brought exceptional frontend skills and a keen eye for detail to our team. Her ability to translate complex designs into pixel-perfect, performant interfaces made a huge impact on our product.",
+      "Zakariya brought exceptional frontend skills and a keen eye for detail to our team. His ability to translate complex designs into pixel-perfect, performant interfaces made a huge impact on our product.",
     color: '#374ced',
     imgPath: "",
     logoPath: "/images/logo1.png",

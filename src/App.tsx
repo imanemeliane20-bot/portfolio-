@@ -1,4 +1,6 @@
+import Contact  from "./elements/Contact"
 import Experiences from "./elements/Experiences"
+import Footer from "./elements/Footer"
 import Hero from "./elements/Hero"
 import Projects from "./elements/Projects"
 import Services from "./elements/Services"
@@ -14,6 +16,8 @@ function App() {
         <Services />
         <Experiences />
         <Projects />
+        <Contact />
+        <Footer />
       </main>
     </div>
     </div>
