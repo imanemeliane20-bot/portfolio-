@@ -4,6 +4,7 @@ import Footer from "./elements/Footer"
 import Hero from "./elements/Hero"
 import Projects from "./elements/Projects"
 import Services from "./elements/Services"
+import SkillsSection from "./elements/Skills"
 import './index.css'
 import Nav from "./Nav"
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Hero />
         <Services />
         <Experiences />
+        <SkillsSection />
         <Projects />
         <Contact />
         <Footer />

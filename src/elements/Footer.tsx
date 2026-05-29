@@ -20,7 +20,7 @@ export default function Footer() {
 
         {/* Nav links */}
         <nav className="flex items-center gap-3 lg:gap-6">
-          {["Services",  "Experience","Projects", "Contact"].map((link) => (
+          {["Services",  "Experience","Skills","Projects", "Contact"].map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}

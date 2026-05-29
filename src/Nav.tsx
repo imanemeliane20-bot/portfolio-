@@ -4,8 +4,10 @@ import { useState } from "react";
 const navLinks = [
   { label: "SERVICES",link:"#services", active: true },
   { label: "EXPERIENCE",link:"#experience", active: false },
+  { label: "SKILLS",link:"#skills" ,active: false },
   { label: "PROJECTS", link:"#projects",active: false },
   { label: "CONTACT",link:"#contact" ,active: false },
+
 ];
 
 export default function Nav() {
@@ -38,7 +40,7 @@ export default function Nav() {
         .nav-links {
           display: flex;
           align-items: center;
-          gap: 2.25rem;
+          gap: 1.25rem;
           list-style: none;
         }
 
@@ -193,7 +195,7 @@ export default function Nav() {
       `}</style>
 
       <header className="sticky top-0 z-50 bg-background">
-        <nav className="nav-wrapper grid grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-3 lg:pr-36">
+        <nav className="nav-wrapper grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr] max-w-7xl mx-auto px-3 lg:pr-36">
           {/* Logo */}
           <a href="/" className="nav-logo">
           <span className="font-bold">
