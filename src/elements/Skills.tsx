@@ -92,7 +92,6 @@ type TechItemData =
 // Sub-components
 const TechItem = ({ item ,size=50}: { item: TechItemData ,size?:number}) => {
     const [isHovered, setIsHovered] = useState(false);
-      const [isLoaded, setIsLoaded] = useState(false);
   if (item.type === "custom") {
     
     return (
