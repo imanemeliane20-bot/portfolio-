@@ -49,14 +49,14 @@ function AnimatedStat({
   return (
     <div className="flex flex-col">
       <h2
-        className="text-5xl font-extrabold text-primary"
+        className="text-5xl font-extrabold text-white"
         style={{ fontFamily: "'Caveat', sans-serif" }}
       >
         {animated}
         {suffix}
       </h2>
       <span
-        className="text-primary text-2xl mt-1"
+        className="text-white text-2xl mt-1"
         style={{ fontFamily: "'Caveat', sans-serif" }}
       >
         {label}
@@ -147,7 +147,7 @@ const Services = () => {
               className={`flex items-center gap-5 rounded-2xl pl-6 pr-10 py-6 shadow-sm cursor-pointer transition-all duration-300 ${
                 selected === i
                   ? "bg-ring scale-[1.02]"
-                  : "bg-white text-secondary"
+                  : "bg-background text-secondary"
               }`}
             >
               <div
@@ -157,7 +157,7 @@ const Services = () => {
               </div>
               <div>
                 <p
-                  className={`font-bold text-3xl ${selected === i ? "text-white" : ""}`}
+                  className={`font-bold text-3xl ${selected === i ? "text-white" : "text-secondary"}`}
                   style={{ fontFamily: "'Caveat', sans-serif" }}
                 >
                   {service.title}
@@ -179,13 +179,13 @@ const Services = () => {
           className="flex flex-col gap-6 mt-12 lg:mt-0 animate-fade-in"
         >
           <h1
-            className="text-4xl lg:text-7xl font-extrabold text-primary leading-tight"
+            className="text-4xl lg:text-7xl font-extrabold text-white leading-tight"
             style={{ fontFamily: "'Caveat', sans-serif" }}
           >
             {active.heading}
           </h1>
           <p
-            className="text-primary leading-relaxed text-base lg:text-xl lg:w-[550px]"
+            className="text-white leading-relaxed text-base lg:text-xl lg:w-[550px]"
             style={{ fontFamily: "'Nunito', sans-serif" }}
           >
             {active.description}
@@ -199,6 +199,7 @@ const Services = () => {
                 count={stat.count}
                 label={stat.label}
                 animate={true}
+              
               />
             ))}
           </div>

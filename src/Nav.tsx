@@ -1,5 +1,6 @@
 import { Hash, PhoneCallIcon } from "lucide-react";
 import { useState } from "react";
+import { ThemeSwitcher } from "./switcher/theme-switcher";
 
 const navLinks = [
   { label: "SERVICES",link:"#services", active: true },
@@ -227,6 +228,7 @@ export default function Nav() {
 
           {/* Right side */}
           <div className="nav-right flex items-center justify-end">
+            <ThemeSwitcher />
             <a href="tel:+0013133456789" className="nav-phone">
               <span className="font-bold text-base">
                  +212 6-70-95-22-18

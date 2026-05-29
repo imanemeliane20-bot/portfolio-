@@ -2,6 +2,7 @@ import Contact  from "./elements/Contact"
 import Experiences from "./elements/Experiences"
 import Footer from "./elements/Footer"
 import Hero from "./elements/Hero"
+import Loader from "./elements/Loader"
 import Projects from "./elements/Projects"
 import Services from "./elements/Services"
 import SkillsSection from "./elements/Skills"
@@ -10,6 +11,7 @@ import Nav from "./Nav"
 function App() {
   return (
     <div>
+       <Loader duration={2660} />
       <div className="min-h-screen bg-background flex flex-col">
       <Nav />
       <main className="flex-1">
