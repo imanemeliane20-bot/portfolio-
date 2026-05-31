@@ -1,6 +1,10 @@
+import FooterData from "../Data/Footer.json";
+
+const { logo, copyright, navLinks } = FooterData;
+
 export default function Footer() {
   return (
-    <footer className="w-full bg-primary border-t border-white/10 px-6 lg:px-20 py-10">
+    <footer className="w-full bg-background border-t border-white/10 px-6 lg:px-20 py-10">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
 
         {/* Logo */}
@@ -8,19 +12,20 @@ export default function Footer() {
           className="text-3xl text-secondary"
           style={{ fontFamily: "'Caveat', cursive" }}
         >
-          Zakariya
+          {logo}
         </span>
 
         {/* Copyright */}
-        <p className="text-secondary text-xl"
-        style={{ fontFamily: "'Caveat',sans-serif" }}
+        <p
+          className="text-secondary text-xl"
+          style={{ fontFamily: "'Caveat',sans-serif" }}
         >
-          © {new Date().getFullYear()} All Rights Reserved.
+          © {new Date().getFullYear()} {copyright}
         </p>
 
         {/* Nav links */}
         <nav className="flex items-center gap-3 lg:gap-6">
-          {["Services",  "Experience","Skills","Projects", "Contact"].map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}

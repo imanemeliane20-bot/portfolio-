@@ -1,0 +1,40 @@
+{
+  "services": [
+    {
+      "icon": "FolderCode",
+      "title": "Frontend Development",
+      "details": "65 Projects",
+      "bg": "bg-[#BDA6CE]",
+      "heading": "What can I Provide ?",
+      "description": "I build responsive, pixel-perfect interfaces using React and TailwindCSS. From landing pages to complex dashboards, every detail is designed with performance and user experience in mind.",
+      "stats": [
+        { "count": "65+", "label": "Projects Done" },
+        { "count": "3+",  "label": "Years Exp." }
+      ]
+    },
+    {
+      "icon": "Server",
+      "title": "Backend Development",
+      "details": "48 Projects",
+      "bg": "bg-[#81A6C6]",
+      "heading": "What can I Provide ?",
+      "description": "I design and build scalable backend systems using Node.js, Express, and databases like MongoDB and PostgreSQL. Clean architecture, secure endpoints, and fast response times.",
+      "stats": [
+        { "count": "48+", "label": "Projects Done" },
+        { "count": "20+", "label": "APIs Built" }
+      ]
+    },
+    {
+      "icon": "FullStack",
+      "title": "FullStack Development",
+      "details": "32 Projects",
+      "bg": "bg-[#547792]",
+      "heading": "What can I Provide ?",
+      "description": "I handle everything from database design to UI delivery. Full ownership of the product lifecycle — authentication, deployment, performance optimization, and everything in between.",
+      "stats": [
+        { "count": "32+", "label": "Projects Done" },
+        { "count": "100%", "label": "Ownership" }
+      ]
+    }
+  ]
+}

@@ -1,19 +1,12 @@
 import { Hash, PhoneCallIcon } from "lucide-react";
 import { useState } from "react";
 import { ThemeSwitcher } from "./switcher/theme-switcher";
-
-const navLinks = [
-  { label: "SERVICES",link:"#services", active: true },
-  { label: "EXPERIENCE",link:"#experience", active: false },
-  { label: "SKILLS",link:"#skills" ,active: false },
-  { label: "PROJECTS", link:"#projects",active: false },
-  { label: "CONTACT",link:"#contact" ,active: false },
-
-];
+import NavData from "./Data/Nav.json";
 
 export default function Nav() {
   const [activeLink, setActiveLink] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const {logo , phone , links}=NavData;
 
   return (
     <>
@@ -200,25 +193,25 @@ export default function Nav() {
           {/* Logo */}
           <a href="/" className="nav-logo">
           <span className="font-bold">
-             Zakariya
+             {logo.name}
           </span>
          
           </a>
 
           {/* Center links */}
           <ul className="hidden xl:flex nav-links uppercase pr-5">
-            {navLinks.map((link) => (
-              <li key={link.label}>
+            {links.map((link) => (
+              <li key={link.display}>
                 <a
                   href={link.link}
-                  className={activeLink === link.label ? "active" : ""}
+                  className={activeLink === link.display ? "active" : ""}
                   onClick={() => {
-                    setActiveLink(link.label);
+                    setActiveLink(link.display);
                   }}
                   
                 >
                   <span className="font-semibold ">
-                      {link.label}
+                      {link.display}
                   </span>
                 
                 </a>
@@ -229,9 +222,9 @@ export default function Nav() {
           {/* Right side */}
           <div className="nav-right flex items-center justify-end">
             <ThemeSwitcher />
-            <a href="tel:+0013133456789" className="nav-phone">
+            <a href={phone.link} className="nav-phone">
               <span className="font-bold text-base">
-                 +212 6-70-95-22-18
+                 {phone.display}
               </span>
              
             </a>
@@ -252,24 +245,24 @@ export default function Nav() {
 
         {/* Mobile menu */}
         <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-          {navLinks.map((link) => (
+          {links.map((link) => (
             <a
-              key={link.label}
+              key={link.display}
               href={link.link}
-              className={activeLink === link.label ? "active" : ""}
+              className={activeLink === link.display ? "active" : ""}
               onClick={() => {
-                setActiveLink(link.label);
+                setActiveLink(link.display);
                 setMenuOpen(false);
               }}
             >
-              {link.label}
+              {link.display}
             </a>
           ))}
           <a className="flex items-center justify-end"
-           href="tel:+212670952218">
+           href={phone.link}>
             <PhoneCallIcon className="text-accent" />
             <span className="text-accent font-bold text-lg pl-3">
-                +212 6-70-95-22-18
+                {phone.display}
             </span>
           
             </a>

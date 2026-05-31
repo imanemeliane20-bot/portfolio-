@@ -1,0 +1,17 @@
+
+{
+  "logo": {
+    "name": "Zakariya"
+  },
+  "phone": {
+    "display": "+212 6-70-95-22-18",
+    "link": "tel:+212670952218"
+  },
+  "links": [
+    { "display": "SERVICES", "link": "#services" },
+    { "display": "EXPERIENCE", "link": "#experience" },
+    { "display": "SKILLS", "link": "#skills" },
+    { "display": "PROJECTS", "link": "#projects" },
+    { "display": "CONTACT", "link": "#contact" }
+  ]
+}

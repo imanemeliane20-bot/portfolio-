@@ -2,13 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =========================
-   DESIGN SYSTEM (React-safe)
-========================= */
-
 :root {
   --background:#f8fcfc ;
-  --background-sec:#a8b1d4 ;
+  --background-sec:#7a88c3 ;
   --primary: #ffffff;
   --secondary: #383a59;
   --ring: #7988c0;
@@ -22,25 +18,25 @@
 }
 
 [data-theme="dark"] {
-  --background:#000000 ;
-  --background-sec:#24262d ;
-   --primary: #302e2e;
- --secondary: #eeeef0;
- --ring:#24262d;
- --accent: #4357f0;
- --accent-hover: #374cedff;
- --tertiary: #171c2f;
- --tertiary-hover: #1f2740;
- --dot: #f94545;
- --select:#1a1d2e;
+    --background: #000000;
+  --background-sec: #16171a;
+  --primary: #ffffff;
+  --secondary: #ffffff;
+  --ring: #616161;
+  --accent: #5a72ff;
+  --accent-hover: #6f84ff;
+  --tertiary: #0f4ccf76;
+  --tertiary-hover: #28304a;
+  --dot: #ff5c5c;
+  --select: #232b3d;
  
 }
 /* BODY */
 body {
-  @apply bg-[var(--primary)] text-[var(--ring)] leading-relaxed;
+  @apply bg-[var(--primary)] text-[var(--primary)] leading-relaxed;
 }
 ::selection {
-  background-color: theme('colors.ring');
+  background-color: theme('colors.accent');
   color: white;
 }
 ::-webkit-scrollbar {
@@ -128,6 +124,6 @@ body {
          items-center border border-transparent z-30 relative;
 }
 .timeline-wrapper {
-  @apply absolute z-10 top-0 lg:left-[440px] md:left-6 left-4 h-full flex flex-col items-center justify-start;
+  @apply absolute z-10 top-0 lg:left-[443px] md:left-6 left-4 h-full flex flex-col items-center justify-start;
 }
 

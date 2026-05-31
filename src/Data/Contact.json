@@ -1,0 +1,46 @@
+{
+  "headline": {
+    "line1": "Let's create",
+    "line2": "something",
+    "line3": "amazing",
+    "line4": "together"
+  },
+  "subtext": "Have a project in mind? Let's discuss how we can bring your vision to life with elegant code and thoughtful design.",
+  "form": {
+    "title": "Send a message",
+    "subtitle": "I'll get back to you within 24 hours.",
+    "fields": {
+      "fullName": {
+        "label": "Full name",
+        "placeholder": "Jane Smith"
+      },
+      "email": {
+        "label": "Email address",
+        "placeholder": "jane@example.com"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Tell me about your project, goals, timeline…"
+      }
+    },
+    "buttons": {
+      "email": "Email",
+      "whatsapp": "WhatsApp"
+    }
+  },
+  "success": {
+    "title": "Message sent successfully!",
+    "body": "Thanks for reaching out, {name}! I'll get back to you at {email} within 24 hours.",
+    "reset": "Send another message"
+  },
+  "contact": {
+    "email": "imanemeliane18@gmail.com.com",
+    "whatsapp": "0670952218"
+  },
+  "socials": [
+    { "name": "Facebook",  "path": "" },
+    { "name": "Instagram", "path": "" },
+    { "name": "Dribbble",  "path": "" },
+    { "name": "LinkedIn",  "path": "" }
+  ]
+}

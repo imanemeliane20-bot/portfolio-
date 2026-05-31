@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FolderCode, Server } from "lucide-react";
+import ServicesData from "../Data/ServiceSection.json";
 
 // Custom hook for count-up animation
 function useCountUp(target: number, duration: number = 1500, trigger: boolean = true) {
@@ -64,65 +65,23 @@ function AnimatedStat({
     </div>
   );
 }
+const FullStackIcon = (
+  <svg xmlns="http://www.w3.org/2000/svg" className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l-3 3 3 3M16 9l3 3-3 3" />
+    <rect x="4" y="3" width="16" height="4" rx="1" />
+    <rect x="4" y="17" width="16" height="4" rx="1" />
+  </svg>
+);
 
-const servicing = [
-  {
-    icon: <FolderCode size={36} />,
-    title: "Frontend Development",
-    details: "65 Projects",
-    bg: "bg-[#BDA6CE]",
-    heading: "What can I Provide ?",
-    description:
-      "I build responsive, pixel-perfect interfaces using React and TailwindCSS. From landing pages to complex dashboards, every detail is designed with performance and user experience in mind.",
-    stats: [
-      { count: "65+", label: "Projects Done" },
-      { count: "3+", label: "Years Exp." },
-    ],
-  },
-  {
-    icon: <Server size={36} />,
-    title: "Backend Development",
-    details: "48 Projects",
-    bg: "bg-[#81A6C6]",
-    heading: "What can I Provide ?",
-    description:
-      "I design and build scalable backend systems using Node.js, Express, and databases like MongoDB and PostgreSQL. Clean architecture, secure endpoints, and fast response times.",
-    stats: [
-      { count: "48+", label: "Projects Done" },
-      { count: "20+", label: "APIs Built" },
-    ],
-  },
-  {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-9 h-9"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M8 9l-3 3 3 3M16 9l3 3-3 3"
-        />
-        <rect x="4" y="3" width="16" height="4" rx="1" />
-        <rect x="4" y="17" width="16" height="4" rx="1" />
-      </svg>
-    ),
-    title: "FullStack Development",
-    details: "32 Projects",
-    bg: "bg-[#547792]",
-    heading: "What can I Provide ?",
-    description:
-      "I handle everything from database design to UI delivery. Full ownership of the product lifecycle — authentication, deployment, performance optimization, and everything in between.",
-    stats: [
-      { count: "32+", label: "Projects Done" },
-      { count: "100%", label: "Ownership" },
-    ],
-  },
-];
+const iconMap: Record<string, JSX.Element> = {
+  FolderCode: <FolderCode size={36} />,
+  Server:     <Server size={36} />,
+  FullStack:  FullStackIcon,
+};
+const servicing = ServicesData.services.map((s)=>({
+  ...s,
+  icon:iconMap[s.icon]
+}))
 
 const Services = () => {
   const [selected, setSelected] = useState(0);
@@ -146,7 +105,7 @@ const Services = () => {
               onClick={() => handleSelect(i)}
               className={`flex items-center gap-5 rounded-2xl pl-6 pr-10 py-6 shadow-sm cursor-pointer transition-all duration-300 ${
                 selected === i
-                  ? "bg-ring scale-[1.02]"
+                  ? "bg-tertiary scale-[1.02]"
                   : "bg-background text-secondary"
               }`}
             >

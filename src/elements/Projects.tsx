@@ -5,146 +5,25 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, FileText, ChevronLeft } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { useGSAP } from "@gsap/react";
+import ProjectsData from "../Data/Projects.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-  {
-    id: 3,
-    category: "applications",
-    title: "Orders & Delivery",
-    description:
-      "At Nova Maroc, I developed an order/delivery tracking app that digitized manual processes, reducing errors and speeding up operations by 40%. The system featured real-time updates and automated reports.",
-    image: "./images/Capture d'écran 2025-06-15 122052.png",
-    pdf: "/Rapport_stage_MELIANE.pdf",
-    link: "",
-    github: "https://github.com/imane42377/Commandes-Livraison",
-    teck: ["Python tkinter", "MySQL Workbench"],
-    gradient: "from-[#829595] to-[#73d1d1]",
-  },
-  {
-    id: 4,
-    category: "applications",
-    title: "Construction Permit Management",
-    description:
-      "During my internship at Ouled Mrah Municipality, I developed a web app to digitize construction permits and automate tax calculations. This replaced paper workflows, reducing delays and errors while improving transparency.",
-    image: "./images/Capture d'écran 2025-07-12 162846.png",
-    pdf: "/Mon-Rapport-Meliane.pdf",
-    link: "",
-    github: "",
-    teck: ["VB.net", "SQL Server"],
-    gradient: "from-violet-600/30 to-indigo-600/30",
-  },
-  {
-    id: 5,
-    category: "fullstack",
-    title: "Library",
-    description:
-      "With 2 classmates, I developed 'Library' — a management system for cataloging books, tracking loans, and managing members. Delivered a working prototype in 3 weeks.",
-    image: "./images/Capture d'écran 2025-07-12 181622.png",
-    pdf: "/Rapport_gb.pdf",
-    link: "",
-    github: "https://github.com/imane42377/Library",
-    teck: ["HTML", "CSS Bootstrap", "JavaScript jQuery", "PHP", "MySQL"],
-    gradient: "from-blue-600/30 to-cyan-600/30",
-  },
-  {
-    id: 6,
-    category: "fullstack",
-    title: "CliqRDV",
-    description:
-      "For my PFE, I co-developed a healthcare web app for online appointment booking. Our solution featured doctor scheduling and patient registration.",
-    image: "./images/Capture d'écran 2025-07-12 184923.png",
-    pdf: "/PFE_Rapport.pdf",
-    link: "https://imane.rf.gd/a",
-    github: "https://github.com/imane42377/PFE_-CliqRDV-",
-    teck: ["HTML", "CSS Bootstrap", "JavaScript", "PHP", "MySQL"],
-    gradient: "from-[#12d] to-[#39d496]",
-  },
-  {
-    id: 7,
-    category: "frontend",
-    title: "Lumière Privé Landing Page",
-    description:
-      "This project focuses on creating a premium and elegant user experience inspired by luxury concierge services, with multi-language support & light/dark mode toggling.",
-    image: "./images/Capture d'écran 2026-04-28 135313.png",
-    pdf: "",
-    link: "lumi-re-priv-e-xn4b.vercel.app/",
-    github: "https://github.com/imane42377/Lumi-re-Priv-e",
-    teck: ["i18n", "React", "Tailwind CSS", "Framer-Motion"],
-    gradient: "from-[#e09641] to-[#e1b974]",
-  },
-  {
-    id: 8,
-    category: "frontend",
-    title: "Ecommerce",
-    description:
-      "Modern ecommerce landing page (React + Tailwind) with multi-language support & light/dark mode toggling.",
-    image: "./images/Capture d'écran 2026-05-02 133820.png",
-    pdf: "",
-    link: "https://e-commerce-landing-page-nine-lilac.vercel.app/",
-    github: "https://github.com/imane42377/ECommerce_landing_page",
-    teck: ["i18n", "React", "Tailwind CSS", "Framer-Motion"],
-    gradient: "from-sky-600/30 to-blue-600/30",
-  },
-  {
-    id: 9,
-    category: "fullstack",
-    title: "Trading Web Application",
-    description:
-      "TimeTravel – Crypto & Stock Investing Platform (Private, Commercial Project) with multi-language support & light/dark mode toggling.",
-    image: "./images/Capture d'écran 2026-05-02 134518.png",
-    pdf: "",
-    link: "",
-    github: "https://github.com/imane42377/TimeTravel-Crypto-Stock-Investing-Platform",
-    teck: ["i18n", "React", "Tailwind CSS", "Redux", "SpringBoot", "MySQL", "CoinGecko API"],
-    gradient: "from-green-600/30 to-emerald-600/30",
-  },
-  {
-    id: 10,
-    category: "frontend",
-    title: "Portfolio",
-    description:
-      "My personal developer portfolio built with Next.js, featuring smooth animations, internationalization, and a polished dark/light theme.",
-    image: "./images/Capture d'écran 2026-05-02 135321.png",
-    pdf: "",
-    link: "https://portfolio-meliane-imane.vercel.app",
-    github: "https://github.com/imane42377/Portfolio",
-    teck: ["i18n", "NextJs", "React", "Tailwind CSS", "Framer-Motion"],
-    gradient: "from-[#8298ee] to-[#0c62b8]",
-  },
-  {
-    id: 11,
-    category: "frontend",
-    title: "MY_Calculator",
-    description: "A simple calculator with basic functions that I created.",
-    image: "./images/Capture d'écran 2025-07-12 191901.png",
-    pdf: "",
-    link: "https://imane42377.github.io/My_Calculator/",
-    github: "https://github.com/imane42377/My_Calculator",
-    teck: ["HTML", "CSS", "JavaScript"],
-    gradient: "from-amber-600/30 to-orange-600/30",
-  },
-];
+const { sectionTitle, categories, categoryLabels, projects } = ProjectsData;
 
-const categories = ["all", "frontend", "fullstack", "applications"];
+// ─── Types ───────────────────────────────────────────────────────────────────
 
-const categoryLabels: Record<string, string> = {
-  all: "All",
-  frontend: "Frontend",
-  fullstack: "Full Stack",
-  applications: "Applications",
-};
+type Project = (typeof projects)[number];
 
 // ─── 3D Carousel ────────────────────────────────────────────────────────────
 
 interface CarouselProps {
-  items: typeof projects;
+  items: Project[];
   activeTab: string;
   onTabChange: (cat: string) => void;
 }
 
-function Carousel3D({ items  , activeTab , onTabChange }: CarouselProps) {
+function Carousel3D({ items, activeTab, onTabChange }: CarouselProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -155,7 +34,10 @@ function Carousel3D({ items  , activeTab , onTabChange }: CarouselProps) {
     const ctx = gsap.context(() => {
       const total = items.length;
       const isMobile = window.innerWidth < 768;
-   const radius = isMobile ?(activeTab === 'all' ? 400: 280)  : (activeTab === 'all' ? 650 : 520);
+      const radius = isMobile
+        ? activeTab === "all" ? 400 : 280
+        : activeTab === "all" ? 650 : 520;
+
       cardsRef.current.forEach((card, i) => {
         if (!card) return;
         const theta = (i / total) * Math.PI * 2;
@@ -197,13 +79,13 @@ function Carousel3D({ items  , activeTab , onTabChange }: CarouselProps) {
 
     return () => ctx.revert();
   }, [items]);
-  useGSAP(()=>{
-    
-  },[])
+
+  useGSAP(() => {}, []);
+
   return (
     <div
       ref={sectionRef}
-      className="relative h-screen w-full flex flex-col items-center justify-center "
+      className="relative h-screen w-full flex flex-col items-center justify-center"
       style={{ perspective: "2200px" }}
     >
       {/* Ambient glow */}
@@ -211,7 +93,7 @@ function Carousel3D({ items  , activeTab , onTabChange }: CarouselProps) {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent/10 blur-[120px]" />
       </div>
 
-      {/* ✅ Category tabs inside the pin */}
+      {/* Category tabs */}
       <div className="relative z-10 flex flex-wrap items-center justify-center gap-2 mb-8">
         {categories.map((cat) => {
           const count =
@@ -231,7 +113,7 @@ function Carousel3D({ items  , activeTab , onTabChange }: CarouselProps) {
                 }
               `}
             >
-              {categoryLabels[cat] ?? cat}
+              {categoryLabels[cat as keyof typeof categoryLabels] ?? cat}
               {count > 0 && (
                 <span
                   className={`ml-1.5 text-base ${
@@ -358,7 +240,7 @@ function Carousel3D({ items  , activeTab , onTabChange }: CarouselProps) {
 // ─── All Projects Grid ───────────────────────────────────────────────────────
 
 interface AllProjectsProps {
-  items: typeof projects;
+  items: Project[];
   onClose: () => void;
 }
 
@@ -504,15 +386,15 @@ const Projects = () => {
         {/* Header */}
         <div className="mb-10 xl:mb-14">
           <h2
-            className="h2 flex items-center justify-center text-3xl lg:text-5xl text-accent whitespace-nowrap  font-bold"
+            className="h2 flex items-center justify-center text-3xl lg:text-5xl text-accent whitespace-nowrap font-bold"
             style={{ fontFamily: "'Caveat', sans-serif" }}
           >
-            <span className="text-secondary pr-3">My Professional</span>
-            Projects
+            <span className="text-secondary pr-3">{sectionTitle.prefix}</span>
+            {sectionTitle.highlight}
           </h2>
         </div>
 
-        {/* Content — tabs are now rendered inside Carousel3D when in carousel mode */}
+        {/* Content */}
         <AnimatePresence mode="wait">
           {tabProjects.length === 0 ? (
             <motion.div
@@ -531,7 +413,7 @@ const Projects = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              {/* Show tabs above the grid when in "all" view */}
+              {/* Tabs above grid in "show all" view */}
               <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
                 {categories.map((cat) => {
                   const count =
@@ -551,7 +433,7 @@ const Projects = () => {
                         }
                       `}
                     >
-                      {categoryLabels[cat] ?? cat}
+                      {categoryLabels[cat as keyof typeof categoryLabels] ?? cat}
                       {count > 0 && (
                         <span
                           className={`ml-1.5 text-base ${

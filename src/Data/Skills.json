@@ -1,0 +1,84 @@
+{
+  "sectionTitle": {
+    "prefix": "My",
+    "highlight": "Skills"
+  },
+  "categories": [
+    {
+      "category": "Frontend",
+      "icon": {
+        "gradient": "from-[#91e4cc] to-[#91e4cc]",
+        "shadow": "shadow-[#91e4cc]",
+        "rotate": "rotate-3"
+      },
+      "underlineColor": "#91e4cc",
+      "underlineWidth": "w-32",
+      "cols": "lg:grid-cols-7",
+      "items": [
+        { "name": "NextJS",       "class": "text-secondary" },
+        { "name": "Redux",        "class": "text-[#7b43c9]",  "type": "techicon" },
+        { "name": "Tailwind CSS", "class": "text-[#40a2f2]" },
+        { "name": "React",        "class": "text-[#35a4ff]" },
+        { "name": "JavaScript",   "class": "text-[#d1c410]" },
+        { "name": "TypeScript",   "class": "text-[#2a6ca1]" },
+        { "name": "Python",       "class": "text-[#2a6ca1]" },
+        { "name": "C#",           "class": "text-[#6730b3]" },
+        { "name": "PHP",          "class": "text-[#473652]" },
+        { "name": "GSAP",         "class": "text-[#2eaa3f]",  "type": "techicon" },
+        { "name": "Framer Motion","class": "text-secondary",  "type": "techicon" }
+      ]
+    },
+    {
+      "category": "Backend",
+      "icon": {
+        "gradient": "from-[#9c83ca] to-[#9c83ca]",
+        "shadow": "shadow-[#9c83ca]",
+        "rotate": "-rotate-3"
+      },
+      "underlineColor": "#9c83ca",
+      "underlineWidth": "w-40",
+      "cols": "md:grid-cols-6",
+      "items": [
+        { "name": "Java",        "class": "text-[#2a6ca1]" },
+        { "name": "Spring Boot", "class": "text-[#2aa13a]" },
+        { "name": "Flask",       "class": "text-secondary" },
+        { "name": ".NET",        "class": "text-[#503ce6]" },
+        { "name": "Node.js",     "class": "text-[#4e9f2c]" }
+      ]
+    },
+    {
+      "category": "Databases",
+      "icon": {
+        "gradient": "from-[#2196F3] to-[#03A9F4]",
+        "shadow": "shadow-[#2196F3]",
+        "rotate": "rotate-2"
+      },
+      "underlineColor": "#2196F3",
+      "underlineWidth": "w-28",
+      "cols": "md:grid-cols-6",
+      "items": [
+        { "name": "MySQL",      "class": "text-[#2a6ca1]" },
+        { "name": "MongoDB",    "class": "text-[#237d2f]" },
+        { "name": "Firebase",   "class": "text-[#ffab3d]" },
+        { "name": "SQL Server", "class": "text-[#d41818]", "type": "custom", "src": "sqlServer" }
+      ]
+    },
+    {
+      "category": "Tools",
+      "icon": {
+        "gradient": "from-[#d41818] to-[#ffab3d]",
+        "shadow": "shadow-[#d41818]",
+        "rotate": "-rotate-2"
+      },
+      "underlineColor": "#FF6B6B",
+      "underlineWidth": "w-16",
+      "cols": "md:grid-cols-6",
+      "items": [
+        { "name": "Git",     "class": "text-[#e24c2a]" },
+        { "name": "Figma",   "class": "text-[#b472ff]" },
+        { "name": "Postman", "class": "text-[#eb6724]" },
+        { "name": "XAMPP",   "class": "text-[#ff8636]", "type": "custom", "src": "xampp" }
+      ]
+    }
+  ]
+}

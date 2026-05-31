@@ -12,7 +12,7 @@ export function ThemeSwitcher() {
   return (
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="justify-items-center w-8 h-8 shrink-0 text-white hover:bg-background-sec bg-ring rounded-lg cursor-pointer"
+      className="justify-items-center w-8 h-8 shrink-0 text-white hover:bg-ring bg-background-sec rounded-lg cursor-pointer"
     >
       {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
     </button>

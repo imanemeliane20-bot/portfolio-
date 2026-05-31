@@ -76,7 +76,7 @@ const TechIcon = ({ name, size = 50, className  }: {
             width:     `${size * 0.7}px`,
             height:    `${size * 0.7}px`,
             transition: 'all 0.3s ease-in-out',
-            filter:    isHovered ? 'drop-shadow(0 0 5px rgba(255,255,255,0.5))' : 'none',
+            filter:    isHovered ? 'drop-shadow(0 0 8px rgba(255,255,255,25))' : 'none',
             animation: isHovered ? 'pulse-wave 2s ease-in-out infinite' : 'none',
           }}
         />

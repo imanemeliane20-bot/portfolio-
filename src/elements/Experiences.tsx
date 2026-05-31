@@ -2,85 +2,22 @@ import GlowCard from "./GlowCard";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ExperienceData from "../Data/Experience_certificationSection.json";
 import coursera from "../assets/course.png";
 import PECB from "../assets/PECB.png";
 
 gsap.registerPlugin(ScrollTrigger);
-const expCards = [
-  {
-    review:
-      "Zakariya brought exceptional frontend skills and a keen eye for detail to our team. His ability to translate complex designs into pixel-perfect, performant interfaces made a huge impact on our product.",
-    color: '#374ced',
-    imgPath: "",
-    logoPath: "/images/logo1.png",
-    title: "Frontend Developer",
-    date: "March 2022 - Present",
-    responsibilities: [
-      "Built responsive, accessible UI components using React and Tailwind CSS.",
-      "Improved Lighthouse performance scores from 62 to 94 across key landing pages.",
-      "Collaborated with product and design teams to ship new features on a two-week sprint cycle.",
-    ],
-  },
-  {
-    review:
-      "Zakariya consistently delivered clean, well-documented code and was a go-to person for tricky CSS and animation challenges. he elevated the quality bar for the entire frontend team.",
-    color: '#91e4cc',
-    imgPath: "",
-    logoPath: "/images/logo2.png",
-    title: "UI Engineer",
-    date: "August 2020 - February 2022",
-    responsibilities: [
-      "Developed and maintained a shared component library used across 5 internal products.",
-      "Implemented complex animations and micro-interactions using Framer Motion.",
-      "Conducted code reviews and mentored junior developers on frontend best practices.",
-    ],
-  },
-  {
-    review:
-      "Zakariya hit the ground running from day one. he quickly became the team's expert on cross-browser compatibility and helped us migrate our legacy jQuery codebase to modern React.",
-    color: '#9c83ca',
-    imgPath: "",
-    logoPath: "/images/logo3.png",
-    title: "Junior Web Developer",
-    date: "June 2018 - July 2020",
-    responsibilities: [
-      "Migrated a legacy jQuery codebase to React, reducing bundle size by 40%.",
-      "Built and styled marketing landing pages from Figma designs with high fidelity.",
-      "Worked closely with the QA team to identify and resolve cross-browser compatibility issues.",
-    ],
-  },
-];
-const certCards = [
-  {
-    id: 1,
-    name: "React Basics",
-    issuer: "Course Certificate — At Coursera",
-    duration: "September 28, 2025",
-    link: "ttps://coursera.org/share/b0bece9b26ca159a97362f7a18b6d8c9",
-    btn: "See the Certificate",
-    logo: coursera,
-  },
-  {
-    id: 2,
-    name: "Advanced React",
-    issuer: "Course Certificate — At Coursera",
-    duration: "November 16, 2025",
-    link: "https://coursera.org/share/d1411a2891b040355a030cbcce374c41",
-    btn: "See the Certificate",
-    logo: coursera,
-  },
-  {
-    id: 3,
-    name: "ISO 21502 Foundation",
-    issuer: "Course Certificate — At PECB",
-    duration: "February 25, 2026",
-    link: "https://mypecb-prod.s3-accelerate.amazonaws.com/UserCertificates/216633/9706159-2026-02_2026-02-25_.pdf?AWSAccessKeyId=AKIAXV2EUQMVAMPDSZVG&Expires=1780063157&Signature=35zVhhv0r0bDr%2BjzlgXbcgtsiNI%3D",
-    btn: "See the Certificate",
-    logo: PECB,
-  },
-];
 
 const Experiences = () => {
+const { experiences, certifications } = ExperienceData;
+
+
+
+const logoMap: Record<string, string> = {
+  coursera,
+  PECB,
+};
+
   useGSAP(() => {
     gsap.utils.toArray('.timeline-card').forEach((card: any) => {
       gsap.from(card, {
@@ -135,14 +72,15 @@ const Experiences = () => {
           style={{ fontFamily: "'Caveat', sans-serif" }}
         >
           <span className="pr-3 text-secondary">
-            My Professinal
+            {experiences.sectionTitle.prefix}
           </span>
-           Work Experience
+            {experiences.sectionTitle.highlight}
+           
         </p>
       </div>
       <div className="mt-28 ">
         <div className="relative z-40 lg:space-y-25 space-y-10">
-          {expCards.map((card, index) => (
+          {experiences.cards.map((card, index) => (
             <div key={card.title}
               className="flex flex-col-reverse lg:flex-row lg:gap-8 gap-6 justify-between">
               <div className="lg:w-2/6 timeline-card z-40">
@@ -211,18 +149,18 @@ const Experiences = () => {
         <p className="text-5xl text-secondary font-semibold mb-2"
           style={{ fontFamily: "'Caveat', sans-serif" }}
         >
-         My <span className="text-accent">
-          Certifications
+         {certifications.sectionTitle.prefix} <span className="text-accent">
+          {certifications.sectionTitle.highlight}
           </span> 
         </p>
       </div>
  
       {/* Grid */}
       <div className="grid grid-cols-1  md:grid-cols-3 gap-6">
-        {certCards.map((card) => (
+        {certifications.cards.map((card) => (
           <div
             key={card.id}
-            className="flex items-start gap-4 rounded-xl border p-5 transition-colors hover:scale-[1.02] bg-ring duration-200"
+            className="flex items-start gap-4 rounded-xl p-5 transition-colors hover:scale-[1.02] bg-background-sec duration-200"
           >
             {/* Logo */}
             <div
@@ -230,7 +168,7 @@ const Experiences = () => {
             >
               <img 
               alt="image"
-              src={card.logo}
+              src={logoMap[card.logo]}
               />
              
             </div>
@@ -268,7 +206,7 @@ const Experiences = () => {
                   href={card.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 hover:scale-[1.02] text-xs font-medium bg-primary rounded-full px-3 text-secondary py-1 transition-colors duration-150"
+                  className="inline-flex items-center gap-1 hover:scale-[1.02] text-xs font-medium bg-primary rounded-full px-3 text-[#000] py-1 transition-colors duration-150"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

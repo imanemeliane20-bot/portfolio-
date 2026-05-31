@@ -1,0 +1,31 @@
+{
+  "greeting": "Hey There,",
+  "name": "I'm Zakariya",
+  "typeAnimation": [
+    "Web Developer",
+    "FrontEnd Developer",
+    "FullStack Developer"
+  ],
+  "tagline": "I design beautifully simple things, And I love what I do.",
+  "experience": {
+    "count": 10,
+    "displayYear": "Years ",
+    "displayExperience": "Experience"
+
+  },
+  "email": {
+    "display": "imanemeliane18@gmail.com",
+    "link": "mailto:imanemeliane18@gmail.com"
+  },
+  "location": "Settat, Morocco",
+  "cv": {
+    "display": "Download CV",
+    "href": "#"
+  },
+  "socials": [
+    { "name": "facebook", "path": "" },
+    { "name": "instagram", "path": "" },
+    { "name": "X", "path": "" },
+    { "name": "linkedin", "path": "" }
+  ]
+}
