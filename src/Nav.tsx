@@ -2,11 +2,24 @@ import { Hash, PhoneCallIcon } from "lucide-react";
 import { useState } from "react";
 import { ThemeSwitcher } from "./switcher/theme-switcher";
 import NavData from "./Data/Nav.json";
+import { useLenisScroll } from "./hooks/useLenisScroll";
 
 export default function Nav() {
   const [activeLink, setActiveLink] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-  const {logo , phone , links}=NavData;
+  const { logo, phone, links } = NavData;
+  const scrollTo = useLenisScroll();
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    link: { display: string; link: string }
+  ) => {
+    if (link.link.startsWith("#")) {
+      e.preventDefault();
+      scrollTo(link.link);
+    }
+    setActiveLink(link.display);
+  };
 
   return (
     <>
@@ -55,14 +68,14 @@ export default function Nav() {
 
         /* Active pill style */
         .nav-links a.active {
-        color: var(--accent);
-        border-top: 1.5px solid transparent;
-        border-bottom: 1.5px solid transparent;
-        border-left: 1.5px solid var(--accent);
-        border-right: 1.5px solid var(--accent);
-        border-radius: 999px;
-        padding: 0.3rem 0.85rem;
-}
+          color: var(--accent);
+          border-top: 1.5px solid transparent;
+          border-bottom: 1.5px solid transparent;
+          border-left: 1.5px solid var(--accent);
+          border-right: 1.5px solid var(--accent);
+          border-radius: 999px;
+          padding: 0.3rem 0.85rem;
+        }
 
         /* Right side */
         .nav-right {
@@ -134,22 +147,23 @@ export default function Nav() {
         }
 
         /* Mobile dropdown */
-     .mobile-menu {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg);
-  padding: 1.25rem 2.5rem 1.5rem;
-  border-bottom: 1px solid rgba(60, 80, 90, 0.08);
-  gap: 1.1rem;
-}
+        .mobile-menu {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: var(--bg);
+          padding: 1.25rem 2.5rem 1.5rem;
+          border-bottom: 1px solid rgba(60, 80, 90, 0.08);
+          gap: 1.1rem;
+        }
+
         .mobile-menu.open {
           display: flex;
         }
 
         .mobile-menu a {
-          font-family: 'monsettat', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 0.82rem;
           font-weight: 400;
           letter-spacing: 0.1em;
@@ -160,8 +174,8 @@ export default function Nav() {
 
         .mobile-menu a.active {
           color: var(--accent);
-          font-size: 1rem;  
-          font-weight: 600; 
+          font-size: 1rem;
+          font-weight: 600;
         }
 
         .mobile-menu a:hover {
@@ -192,10 +206,7 @@ export default function Nav() {
         <nav className="nav-wrapper grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr] max-w-7xl mx-auto px-3 lg:pr-36">
           {/* Logo */}
           <a href="/" className="nav-logo">
-          <span className="font-bold">
-             {logo.name}
-          </span>
-         
+            <span className="font-bold">{logo.name}</span>
           </a>
 
           {/* Center links */}
@@ -205,15 +216,9 @@ export default function Nav() {
                 <a
                   href={link.link}
                   className={activeLink === link.display ? "active" : ""}
-                  onClick={() => {
-                    setActiveLink(link.display);
-                  }}
-                  
+                  onClick={(e) => handleNavClick(e, link)}
                 >
-                  <span className="font-semibold ">
-                      {link.display}
-                  </span>
-                
+                  <span className="font-semibold">{link.display}</span>
                 </a>
               </li>
             ))}
@@ -223,13 +228,10 @@ export default function Nav() {
           <div className="nav-right flex items-center justify-end">
             <ThemeSwitcher />
             <a href={phone.link} className="nav-phone">
-              <span className="font-bold text-base">
-                 {phone.display}
-              </span>
-             
+              <span className="font-bold text-base">{phone.display}</span>
             </a>
             <button className="nav-phone-btn bg-primary p-2" aria-label="Call us">
-              <PhoneCallIcon className="" />
+              <PhoneCallIcon />
             </button>
 
             {/* Hamburger */}
@@ -237,7 +239,7 @@ export default function Nav() {
               className={`hamburger ${menuOpen ? "open" : ""}`}
               aria-label="Toggle menu"
               onClick={() => setMenuOpen(!menuOpen)}
-              >
+            >
               <Hash className="text-accent hover:text-accent-hover" />
             </button>
           </div>
@@ -250,22 +252,18 @@ export default function Nav() {
               key={link.display}
               href={link.link}
               className={activeLink === link.display ? "active" : ""}
-              onClick={() => {
-                setActiveLink(link.display);
+              onClick={(e) => {
+                handleNavClick(e, link);
                 setMenuOpen(false);
               }}
             >
               {link.display}
             </a>
           ))}
-          <a className="flex items-center justify-end"
-           href={phone.link}>
+          <a className="flex items-center justify-end" href={phone.link}>
             <PhoneCallIcon className="text-accent" />
-            <span className="text-accent font-bold text-lg pl-3">
-                {phone.display}
-            </span>
-          
-            </a>
+            <span className="text-accent font-bold text-lg pl-3">{phone.display}</span>
+          </a>
         </div>
       </header>
     </>
