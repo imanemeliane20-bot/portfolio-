@@ -36,11 +36,5 @@
   "contact": {
     "email": "imanemeliane18@gmail.com.com",
     "whatsapp": "0670952218"
-  },
-  "socials": [
-    { "name": "Facebook",  "path": "" },
-    { "name": "Instagram", "path": "" },
-    { "name": "Dribbble",  "path": "" },
-    { "name": "LinkedIn",  "path": "" }
-  ]
+  }
 }

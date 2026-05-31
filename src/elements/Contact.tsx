@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ContactData from "../Data/Contact.json";
 
-const { headline, subtext, form, success, contact, socials } = ContactData;
+const { headline, subtext, form, success, contact } = ContactData;
 
 
 export default function Contact() {
