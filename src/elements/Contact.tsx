@@ -1,21 +1,8 @@
 import { useState } from "react";
-import {
-  BiLogoDribbble,
-  BiLogoFacebook,
-  BiLogoInstagram,
-  BiLogoLinkedin,
-} from "react-icons/bi";
 import ContactData from "../Data/Contact.json";
 
 const { headline, subtext, form, success, contact, socials } = ContactData;
 
-// Map social name → icon component
-const socialIconMap: Record<string, JSX.Element> = {
-  Facebook:  <BiLogoFacebook />,
-  Instagram: <BiLogoInstagram />,
-  Dribbble:  <BiLogoDribbble />,
-  LinkedIn:  <BiLogoLinkedin />,
-};
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -225,22 +212,6 @@ export default function Contact() {
         </div>
 
       </div>
-
-      {/* Socials — desktop only */}
-      <div className="hidden lg:flex flex-col gap-6 absolute top-1/2 right-4 -translate-y-1/2 z-50">
-        {socials.map((item) => (
-          <a
-            key={item.name}
-            href={item.path || undefined}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-accent text-white hover:bg-accent-hover transition w-10 h-10 text-[22px] flex items-center justify-center rounded-full cursor-pointer"
-          >
-            {socialIconMap[item.name]}
-          </a>
-        ))}
-      </div>
-
     </section>
   );
 }

@@ -28,7 +28,7 @@ export default function Footer() {
           {navLinks.map((link) => (
             <a
               key={link}
-              href={`#${link.toLowerCase()}`}
+              href={link==="Home" ? "#" : `#${link.toLowerCase()}`}
               className="text-base lg:text-lg font-medium tracking-widest uppercase text-secondary hover:text-accent transition-colors duration-200"
               style={{ fontFamily: "'Caveat',sans-serif" }}
             >

@@ -8,6 +8,7 @@
     "link": "tel:+212670952218"
   },
   "links": [
+    { "display": "Home", "link": "#" },
     { "display": "SERVICES", "link": "#services" },
     { "display": "EXPERIENCE", "link": "#experience" },
     { "display": "SKILLS", "link": "#skills" },

@@ -1,8 +1,9 @@
 import brush from '../assets/clearBrushing.png'
 import avatar from '../assets/avatar.png'
-import { ArrowDownToLine, Mail, MapPin, X } from 'lucide-react';
+import { ArrowDownToLine, Mail, MapPin } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
-import { BiLogoDribbble, BiLogoFacebook, BiLogoInstagram, BiLogoLinkedin } from "react-icons/bi"
+import {  BiLogoFacebook, BiLogoInstagram, BiLogoLinkedin } from "react-icons/bi";
+import { FaXTwitter } from "react-icons/fa6";
 import CountUp from 'react-countup';
 import HeroData from "../Data/Hero.json";
 
@@ -10,7 +11,7 @@ const socialIcons: Record<string, JSX.Element> =
 {
   facebook: <BiLogoFacebook />,
   instagram: <BiLogoInstagram />,
-  X: <BiLogoDribbble />,
+  X:<FaXTwitter />,
   linkedin: <BiLogoLinkedin />,
 }
 
@@ -18,7 +19,7 @@ export default function Hero() {
   const { greeting, name, typeAnimation, tagline, experience, email, location, cv, socials } = HeroData;
   const sequence = typeAnimation.flatMap((text) => [text, 2000]);
   return (
-    <section className='lg:pl-24 overflow-hidden'>
+    <section className='lg:pl-24 overflow-hidden relative' >
 
       {/* ── DESKTOP layout ── */}
       <div className="flex flex-col lg:grid max-w-7xl mx-auto grid-cols-[1fr_1.3fr_1fr] items-stretch px-10 py-2 lg:pr-36 ">
@@ -135,7 +136,6 @@ export default function Hero() {
         {socials.map((item, i) => (
           <div key={i} className='bg-accent text-white hover:bg-accent-hover transition w-10 h-10 text-[22px] flex items-center justify-center rounded-full cursor-pointer'>
             {socialIcons[item.name]}
-
           </div>
         ))}
       </div>
