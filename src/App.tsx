@@ -18,7 +18,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   useEffect(() => {
-    const lenis = new Lenis({
+    let lenis : Lenis;
+    let rafId :number  ;
+     lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
@@ -32,11 +34,19 @@ function App() {
 
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    rafId=requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    return () => {
+      if(rafId!==null) cancelAnimationFrame(rafId);
+      if(lenis){
+        lenis.off("scroll",ScrollTrigger.update);
+      lenis.destroy();
+      }
+      
+    
+    };
   }, []);
 
   return (
