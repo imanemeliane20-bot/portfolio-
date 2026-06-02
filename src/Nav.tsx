@@ -11,13 +11,9 @@ export default function Nav() {
   const scrollTo = useLenisScroll();
 
   const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
     link: { display: string; link: string }
   ) => {
-    if (link.link.startsWith("#")) {
-      e.preventDefault();
       scrollTo(link.link);
-    }
     setActiveLink(link.display);
   };
 
@@ -216,7 +212,7 @@ export default function Nav() {
                 <a
                   href={link.link}
                   className={activeLink === link.display ? "active" : ""}
-                  onClick={(e) => handleNavClick(e, link)}
+                  onClick={() => handleNavClick(link)}
                 >
                   <span className="font-semibold">{link.display}</span>
                 </a>
@@ -252,8 +248,8 @@ export default function Nav() {
               key={link.display}
               href={link.link}
               className={activeLink === link.display ? "active" : ""}
-              onClick={(e) => {
-                handleNavClick(e, link);
+              onClick={() => {
+                handleNavClick(link);
                 setMenuOpen(false);
               }}
             >

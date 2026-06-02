@@ -3,8 +3,8 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ExperienceData from "../Data/Experience_certificationSection.json";
-import coursera from "../assets/course.png";
-import PECB from "../assets/PECB.png";
+import coursera from "../assets/course.webp";
+import PECB from "../assets/PECB.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 

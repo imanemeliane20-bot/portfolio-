@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 import Lenis from "lenis";
 
-// Grab the Lenis instance that App.tsx created
 let lenisInstance: Lenis | null = null;
 
 export function setLenisInstance(l: Lenis) {
@@ -10,6 +9,17 @@ export function setLenisInstance(l: Lenis) {
 
 export function useLenisScroll() {
   const scrollTo = useCallback((target: string) => {
+    // "Home" → scroll to very top
+    if (target === "#" || target === "#home") {
+      if (lenisInstance) {
+        lenisInstance.scrollTo(0, { duration: 1.4 });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
+    }
+
+    // All other sections
     const el = document.querySelector(target);
     if (!el) return;
     if (lenisInstance) {
