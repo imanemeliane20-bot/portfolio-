@@ -1,0 +1,43 @@
+/* =========================
+   MONTERRAT (UI FONT)
+========================= */
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/montserrat-v31-latin-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+/* =========================
+   NUNITO (BODY TEXT)
+========================= */
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/nunito-v32-latin-500.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* =========================
+   CAVEAT (LOGO ONLY)
+========================= */
+
+@font-face {
+  font-family: "Caveat";
+  src: url("/fonts/caveat-v23-latin-500.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caveat";
+  src: url("/fonts/caveat-v23-latin-600.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caveat";
+  src: url("/fonts/caveat-v23-latin-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}

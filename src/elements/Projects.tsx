@@ -104,8 +104,8 @@ function Carousel3D({ items, activeTab, onTabChange }: CarouselProps) {
             <button
               key={cat}
               onClick={() => onTabChange(cat)}
-              style={{ fontFamily: "'Caveat', sans-serif" }}
-              className={`tab-btn h-9 px-4 rounded-full text-2xl font-semibold transition-all duration-200 border
+              
+              className={`tab-btn font-caveat h-9 px-4 rounded-full text-2xl font-semibold transition-all duration-200 border
                 ${
                   activeTab === cat
                     ? "bg-accent text-white border-accent shadow-lg shadow-accent-hover"
@@ -116,10 +116,10 @@ function Carousel3D({ items, activeTab, onTabChange }: CarouselProps) {
               {categoryLabels[cat as keyof typeof categoryLabels] ?? cat}
               {count > 0 && (
                 <span
-                  className={`ml-1.5 text-base ${
+                  className={`ml-1.5 text-base font-caveat ${
                     activeTab === cat ? "text-white/70" : "text-accent/50"
                   }`}
-                  style={{ fontFamily: "'Caveat', sans-serif" }}
+                
                 >
                   {count}
                 </span>
@@ -158,6 +158,7 @@ function Carousel3D({ items, activeTab, onTabChange }: CarouselProps) {
               {project.image && (
                 <img
                   src={project.image}
+                  
                   alt={project.title}
                   className="object-cover h-1/2 w-full opacity-40 group-hover:opacity-60"
                   onError={(e) => {
@@ -228,8 +229,8 @@ function Carousel3D({ items, activeTab, onTabChange }: CarouselProps) {
 
       {/* Scroll hint */}
       <span
-        className="absolute bottom-10 text-secondary flex items-center justify-center font-semibold text-xl uppercase"
-        style={{ fontFamily: "'Caveat', sans-serif" }}
+        className="absolute bottom-10 font-caveat text-secondary flex items-center justify-center font-semibold text-xl uppercase"
+        
       >
         Scroll to rotate
       </span>
@@ -386,8 +387,8 @@ const Projects = () => {
         {/* Header */}
         <div className="mb-10 xl:mb-14">
           <h2
-            className="h2 flex items-center justify-center text-3xl lg:text-5xl text-accent whitespace-nowrap font-bold"
-            style={{ fontFamily: "'Caveat', sans-serif" }}
+            className="h2 flex font-caveat items-center justify-center text-3xl lg:text-5xl text-accent whitespace-nowrap font-bold"
+            
           >
             <span className="text-secondary pr-3">{sectionTitle.prefix}</span>
             {sectionTitle.highlight}
@@ -424,8 +425,8 @@ const Projects = () => {
                     <button
                       key={cat}
                       onClick={() => handleTabChange(cat)}
-                      style={{ fontFamily: "'Caveat', sans-serif" }}
-                      className={`tab-btn h-9 px-4 rounded-full text-2xl font-semibold transition-all duration-200 border
+                    
+                      className={`tab-btn font-caveat h-9 px-4 rounded-full text-2xl font-semibold transition-all duration-200 border
                         ${
                           activeTab === cat
                             ? "bg-accent text-white border-accent shadow-lg shadow-accent-hover"
@@ -436,10 +437,10 @@ const Projects = () => {
                       {categoryLabels[cat as keyof typeof categoryLabels] ?? cat}
                       {count > 0 && (
                         <span
-                          className={`ml-1.5 text-base ${
+                          className={`ml-1.5 text-base font-caveat ${
                             activeTab === cat ? "text-white/70" : "text-accent/50"
                           }`}
-                          style={{ fontFamily: "'Caveat', sans-serif" }}
+                         
                         >
                           {count}
                         </span>

@@ -10,6 +10,11 @@ export default {
       screens:{
        
       },
+      fontFamily: {
+  montserrat: ["Montserrat", "sans-serif"],
+  nunito: ["Nunito", "sans-serif"],
+  caveat: ["Caveat", "cursive"],
+},
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

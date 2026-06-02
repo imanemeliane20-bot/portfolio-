@@ -7,7 +7,7 @@
     },
     "cards": [
       {
-        "color": "#374ced",
+        "color": "bg-[#374ced]",
         "imgPath": "",
         "logoPath": "/images/logo1.png",
         "title": "Frontend Developer",
@@ -20,7 +20,7 @@
         ]
       },
       {
-        "color": "#91e4cc",
+        "color": "bg-[#91e4cc]",
         "imgPath": "",
         "logoPath": "/images/logo2.png",
         "title": "UI Engineer",
@@ -33,7 +33,7 @@
         ]
       },
       {
-        "color": "#9c83ca",
+        "color": "bg-[#9c83ca]",
         "imgPath": "",
         "logoPath": "/images/logo3.png",
         "title": "Junior Web Developer",

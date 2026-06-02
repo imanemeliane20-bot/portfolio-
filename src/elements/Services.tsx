@@ -50,16 +50,14 @@ function AnimatedStat({
   return (
     <div className="flex flex-col">
       <h2
-        className="text-5xl font-extrabold text-white"
-        style={{ fontFamily: "'Caveat', sans-serif" }}
+        className="text-5xl font-caveat font-extrabold text-white"
+       
       >
         {animated}
         {suffix}
       </h2>
       <span
-        className="text-white text-2xl mt-1"
-        style={{ fontFamily: "'Caveat', sans-serif" }}
-      >
+        className="text-white text-2xl mt-1 font-caveat">
         {label}
       </span>
     </div>
@@ -116,14 +114,12 @@ const Services = () => {
               </div>
               <div>
                 <p
-                  className={`font-bold text-3xl ${selected === i ? "text-white" : "text-secondary"}`}
-                  style={{ fontFamily: "'Caveat', sans-serif" }}
-                >
+                  className={`font-bold text-3xl font-caveat ${selected === i ? "text-white" : "text-secondary"}`}>
                   {service.title}
                 </p>
                 <span
-                  className={`text-md ${selected === i ? "text-white" : "text-secondary"}`}
-                  style={{ fontFamily: "'Nunito', sans-serif" }}
+                  className={`text-md font-nunito ${selected === i ? "text-white" : "text-secondary"}`}
+                 
                 >
                   {service.details}
                 </span>
@@ -138,14 +134,13 @@ const Services = () => {
           className="flex flex-col gap-6 mt-12 lg:mt-0 animate-fade-in"
         >
           <h1
-            className="text-4xl lg:text-7xl font-extrabold text-white leading-tight"
-            style={{ fontFamily: "'Caveat', sans-serif" }}
+            className="text-4xl lg:text-7xl font-caveat font-extrabold text-white leading-tight"
           >
             {active.heading}
           </h1>
           <p
-            className="text-white leading-relaxed text-base lg:text-xl lg:w-[550px]"
-            style={{ fontFamily: "'Nunito', sans-serif" }}
+            className="text-white font-nunito leading-relaxed text-base lg:text-xl lg:w-[550px]"
+           
           >
             {active.description}
           </p>

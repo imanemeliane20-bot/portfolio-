@@ -68,8 +68,8 @@ const logoMap: Record<string, string> = {
       className='w-full px-5 md:px-10 overflow-hidden md:mt-30 mt-20 lg:px-36'
     >
       <div className='w-full h-full md:px-20 px-5 '>
-        <p className="font-semibold md:text-5xl text-4xl text-center text-accent"
-          style={{ fontFamily: "'Caveat', sans-serif" }}
+        <p className="font-semibold font-caveat md:text-5xl text-4xl text-center text-accent"
+          
         >
           <span className="pr-3 text-secondary">
             {experiences.sectionTitle.prefix}
@@ -100,29 +100,29 @@ const logoMap: Record<string, string> = {
                   <div className="expText flex lg:gap-8 md:gap-6 gap-4 relative z-20">
                     {/* cercle */}
                     <div className="timeline-logo">
-                      <div className="size-4 rounded-full" style={{ backgroundColor: card.color }} />
+                      <div className={`${card.color} size-4 rounded-full`}/>
                     </div>
                     <div className="">
-                      <h1 className="font-bold text-5xl text-accent"
-          style={{ fontFamily: "'Caveat', sans-serif" }}
+                      <h1 className="font-bold font-caveat text-5xl text-accent"
+         
                       
                       >
                         {card.title}
                       </h1>
-                      <p className="my-5 text-base text-secondary"
-                        style={{ fontFamily: "'Caveat', sans-serif" }} 
+                      <p className="my-5 text-base font-caveat text-secondary"
+                
                       >
                         {card.date}
                       </p>
-                      <p className="text-ring italic font-semibold text-2xl"
-                        style={{ fontFamily: "'Caveat', sans-serif" }}
+                      <p className="text-ring italic font-caveat font-semibold text-2xl"
+                       
                       >
                         Responsibilities
                       </p>
                       <ul className="list-disc ms-5 mt-5 flex flex-col gap-5 text-secondary">
                         {card.responsibilities.map((res) => (
-                          <li key={res} className="text-lg text-secondary"
-                          style={{ fontFamily: "'Nunito', sans-serif" }}
+                          <li key={res} className="text-lg font-nunito text-secondary"
+                          
                           >
                             {res}
                           </li>
@@ -146,8 +146,7 @@ const logoMap: Record<string, string> = {
     >
       {/* Heading */}
       <div className="flex flex-col items-center mb-10">
-        <p className="text-5xl text-secondary font-semibold mb-2"
-          style={{ fontFamily: "'Caveat', sans-serif" }}
+        <p className="text-5xl text-secondary font-caveat font-semibold mb-2"
         >
          {certifications.sectionTitle.prefix} <span className="text-accent">
           {certifications.sectionTitle.highlight}
@@ -175,10 +174,10 @@ const logoMap: Record<string, string> = {
  
             {/* Body */}
             <div className="flex-1 min-w-0">
-              <p className="font-semibold text-2xl leading-snug mb-1 text-primary"   style={{ fontFamily: "'Caveat', sans-serif" }}>
+              <p className="font-semibold text-2xl leading-snug mb-1 text-primary font-caveat">
                 {card.name}
               </p>
-              <p className="text-xl mb-2 font-medium leading-relaxed text-secondary"   style={{ fontFamily: "'Caveat', sans-serif" }} >
+              <p className="text-xl mb-2 font-medium leading-relaxed text-secondary font-caveat" >
                 {card.issuer}
               </p>
               <p className="text-normal mb-3 flex items-center gap-1 text-secondary" >

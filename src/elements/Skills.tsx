@@ -90,8 +90,8 @@ const CategoryCard = ({ category }: { category: CategoryData }) => (
       </div>
       <div>
         <h3
-          className="text-3xl font-bold text-secondary"
-          style={{ fontFamily: "'Caveat', sans-serif" }}
+          className="text-3xl font-caveat font-bold text-secondary"
+        
         >
           {category.category}
         </h3>
@@ -130,8 +130,8 @@ export default function SkillsSection() {
       <div className="technologies-content mt-[4em] flex flex-col items-center w-full">
         <div className="relative mb-16 flex flex-col items-center">
           <h2
-            className="font-semibold my-7 relative text-5xl text-secondary"
-            style={{ fontFamily: "'Caveat', sans-serif" }}
+            className="font-semibold my-7 font-caveat relative text-5xl text-secondary"
+            
           >
             {sectionTitle.prefix}{" "}
             <span className="pl-3 text-accent">{sectionTitle.highlight}</span>

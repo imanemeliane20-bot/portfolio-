@@ -17,16 +17,16 @@ export default function Footer() {
 
         {/* Logo */}
         <span
-          className="text-3xl text-secondary"
-          style={{ fontFamily: "'Caveat', cursive" }}
+          className="text-3xl text-secondary font-caveat"
+         
         >
           {logo}
         </span>
 
         {/* Copyright */}
         <p
-          className="text-secondary text-xl"
-          style={{ fontFamily: "'Caveat',sans-serif" }}
+          className="text-secondary font-caveat text-xl"
+         
         >
           © {new Date().getFullYear()} {copyright}
         </p>
@@ -38,8 +38,8 @@ export default function Footer() {
               key={link}
               href={`#${link.toLowerCase()}`}
               onClick={(e) => handleClick(e, link)}
-              className="text-base lg:text-lg font-medium tracking-widest uppercase text-secondary hover:text-accent transition-colors duration-200"
-              style={{ fontFamily: "'Caveat',sans-serif" }}
+              className="text-base lg:text-lg font-caveat font-medium tracking-widest uppercase text-secondary hover:text-accent transition-colors duration-200"
+             
             >
               {link}
             </a>

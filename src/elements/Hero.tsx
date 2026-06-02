@@ -33,6 +33,7 @@ export default function Hero() {
   const socialsDesktop= useRef<HTMLDivElement>(null);
   const socialsMobile = useRef<HTMLDivElement>(null);
 
+  
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "elastic.out(1, 0.6)" } });
@@ -70,7 +71,7 @@ export default function Hero() {
       if (avatarRef.current) {
         tl.fromTo(avatarRef.current,
           { opacity: 0, y: 120, scale: 0.85 },
-          { opacity: 1, y: 0, scale: 1, duration: 1.5, ease: "elastic.out(1, 0.55)" },
+          { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power2.out" },
           0.3
         );
       }
@@ -163,7 +164,7 @@ export default function Hero() {
 
         {/* Left column */}
         <div className="flex flex-col justify-between z-10">
-          <h1 style={{ fontFamily: "'Caveat',sans-serif" }} className="text-4xl lg:text-8xl whitespace-nowrap font-bold text-secondary leading-normal">
+          <h1 className="text-4xl font-caveat lg:text-8xl whitespace-nowrap font-bold text-secondary leading-normal">
             <span ref={greetingRef}>{splitWords(greeting)}</span>
             <br />
             <span ref={nameRef}>{splitWords(name)}</span>
@@ -172,8 +173,7 @@ export default function Hero() {
               sequence={sequence}
               wrapper="span"
               speed={40}
-              style={{ fontFamily: "'Caveat', cursive" }}
-              className="text-accent text-4xl lg:text-6xl font-bold"
+              className="text-accent font-caveat text-4xl lg:text-6xl font-bold"
               repeat={Infinity}
               cursor={false}
             />
@@ -182,9 +182,9 @@ export default function Hero() {
           <div>
             <div ref={emailRef} className='hidden lg:flex items-center lg:pt-10 pb-5'>
               <Mail className='text-accent hover:text-tertiary cursor-pointer' />
-              <a style={{ fontFamily: "'Montserrat',sans-serif" }}
+              <a 
                 href={email.link}
-                className="pl-5 text-accent hover:text-secondary font-medium text-lg underline">
+                className="pl-5 text-accent font-montserrat hover:text-secondary font-medium text-lg underline">
                 {email.display}
               </a>
             </div>
@@ -195,7 +195,7 @@ export default function Hero() {
           </div>
 
           <div ref={expRef} className="hidden lg:flex items-baseline pb-32 pt-6 gap-2">
-            <div className='flex items-baseline gap-1' style={{ fontFamily: "'Caveat',sans-serif" }}>
+            <div className='flex items-baseline gap-1 font-caveat'>
               <span className="text-5xl font-extrabold text-secondary">+</span>
               <CountUp
                 end={experience.count}
@@ -204,8 +204,7 @@ export default function Hero() {
                 className="text-5xl font-extrabold text-secondary"
               />
             </div>
-            <span className="text-4xl font-bold tracking-widest text-secondary uppercase"
-              style={{ fontFamily: "'Caveat',sans-serif" }}
+            <span className="text-4xl font-bold font-caveat tracking-widest text-secondary uppercase"
             >
               {experience.displayYear} <br /> {experience.displayExperience}
             </span>
@@ -218,17 +217,26 @@ export default function Hero() {
 
         {/* Center column */}
         <div className="relative flex-[1.5] flex items-end justify-center select-none">
-          <img ref={brushRef} src={brush} alt="brush"
+          <img ref={brushRef} src={brush} alt="brush" loading="eager" fetchPriority="high"
             className="absolute w-[350px] h-[380px] lg:w-[470px] lg:h-[630px] z-0" />
-          <img ref={avatarRef} src={avatar} alt="personelPhoto"
-            className="relative flex bottom-0 left-[160px] lg:top-[60px] lg:left-[200px] -translate-x-1/2 z-10 h-[380px] lg:h-[580px] object-contain drop-shadow-lg" />
+         <img
+            ref={avatarRef}
+            src={avatar}
+            alt="personelPhoto"
+            width={529}
+            height={700}
+            fetchPriority="high"
+            loading="eager"  
+            decoding="async"
+            className="relative flex bottom-0 left-[160px] lg:top-[60px] lg:left-[200px] -translate-x-1/2 z-10 h-[380px] lg:h-[580px] object-contain drop-shadow-lg"
+          />
         </div>
 
         {/* CV button mobile */}
         <div className="lg:hidden flex flex-col items-center gap-2 py-4">
           <button ref={cvBtnMobile} className="rounded-full transition-all h-14 min-w-50 px-6 tracking-widest bg-select hover:bg-tertiary-hover text-secondary uppercase font-extrabold text-base text-center">
-            <div className='flex items-center justify-center gap-2'>
-              <span style={{ fontFamily: "'Caveat',cursive" }}>{cv.display}</span>
+            <div className='flex items-center justify-center font-caveat gap-2'>
+              <span >{cv.display}</span>
               <ArrowDownToLine width={25} height={25} />
             </div>
           </button>
@@ -246,9 +254,9 @@ export default function Hero() {
         {/* Email mobile */}
         <div className='lg:hidden flex items-center pb-5'>
           <Mail className='text-accent hover:text-tertiary cursor-pointer' />
-          <a style={{ fontFamily: "'Montserrat',sans-serif" }}
+          <a 
             href={email.link}
-            className="pl-5 text-accent hover:text-tertiary font-medium text-base underline">
+            className="pl-5 text-accent dont-montserrat hover:text-tertiary font-medium text-base underline">
             {email.display}
           </a>
         </div>
@@ -266,8 +274,8 @@ export default function Hero() {
           </p>
           <div className="flex flex-col items-center gap-2 lg:pb-44">
             <button ref={cvBtnDesktop} className="rounded-full hover:scale-[1.02] transition-all h-14 min-w-50 px-6 tracking-widest bg-select hover:bg-tertiary-hover text-secondary uppercase font-extrabold text-base text-center">
-              <div className='flex items-center justify-center gap-2'>
-                <span style={{ fontFamily: "'Caveat',cursive" }}>{cv.display}</span>
+              <div className='flex items-center font-caveat justify-center gap-2'>
+                <span>{cv.display}</span>
                 <ArrowDownToLine width={25} height={25} />
               </div>
             </button>

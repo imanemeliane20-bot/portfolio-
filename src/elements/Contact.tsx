@@ -45,7 +45,7 @@ export default function Contact() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         {/* ── LEFT ── */}
-        <div style={{ fontFamily: "'Caveat',sans-serif" }}>
+        <div className="font-caveat">
           <h2 className="text-7xl lg:text-9xl font-bold text-white tracking-tight">
             {headline.line1}
             <br />
