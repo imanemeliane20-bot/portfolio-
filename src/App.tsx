@@ -26,6 +26,7 @@ function App() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
+  
 
     // Make instance available to nav/footer hooks
     setLenisInstance(lenis);
@@ -38,6 +39,7 @@ function App() {
       rafId = requestAnimationFrame(raf);
     }
     rafId=requestAnimationFrame(raf);
+  }
  const run =
     window.requestIdleCallback ||
     ((cb: any) => setTimeout(cb, 1));
@@ -50,10 +52,8 @@ function App() {
         lenis.off("scroll",ScrollTrigger.update);
       lenis.destroy();
       }
-      
-    
     };
-  }, []);
+  },[]);
 
   return (
     <div>
