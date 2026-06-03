@@ -8,7 +8,7 @@ import Loader from "./elements/Loader";
 gsap.registerPlugin(ScrollTrigger);
 
 // lazy components
-const Hero = lazy(() => import("./elements/Hero"));
+import Hero from "./elements/Hero";
 const Nav = lazy(() => import("./Nav"));
 const Services = lazy(() => import("./elements/Services"));
 const Experiences = lazy(() => import("./elements/Experiences"));
@@ -75,10 +75,12 @@ function App() {
       </Suspense>
 
       <div className="min-h-screen bg-background flex flex-col">
-        <Suspense fallback={null}>
-          <Nav />
+         <Nav />
           <Hero />
 
+      
+         
+  <Suspense fallback={null}>
           {ready && (
             <main className="flex-1">
               <Services />

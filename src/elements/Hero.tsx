@@ -1,5 +1,8 @@
-import brush from '../assets/clearBrushing.webp'
-import avatar from '../assets/avatar.webp'
+import brushPC from '../assets/clearBrushingPC.webp'
+import brushSM from '../assets/clearBrushingSM.webp';
+import avatarPC from '../assets/avatarPC.webp'
+import avatarSM from '../assets/avatarSM.webp'
+
 import { ArrowDownToLine, Mail, MapPin } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
 import { BiLogoFacebook, BiLogoInstagram, BiLogoLinkedin } from "react-icons/bi";
@@ -216,19 +219,35 @@ export default function Hero() {
         </div>
 
         {/* Center column */}
-        <div className="relative flex-[1.5] flex items-end justify-center select-none">
-          <img ref={brushRef} src={brush} alt="brush" loading="eager" fetchPriority="high"
-            className="absolute w-[350px] h-[380px] lg:w-[470px] lg:h-[630px] z-0" />
+        <div className="hidden lg:flex relative flex-[1.5] items-end justify-center select-none">
+          <img ref={brushRef} src={brushPC} alt="brushPC" loading="eager" fetchPriority="high" decoding="async"
+            className=" absolute w-[470px] h-[630px] z-0" />
+                
          <img
             ref={avatarRef}
-            src={avatar}
+            src={avatarPC}
             alt="personelPhoto"
             width={529}
             height={700}
             fetchPriority="high"
             loading="eager"  
             decoding="async"
-            className="relative flex bottom-0 left-[160px] lg:top-[60px] lg:left-[200px] -translate-x-1/2 z-10 h-[380px] lg:h-[580px] object-contain drop-shadow-lg"
+            className="relative bottom-1 top-[60px] left-[200px] -translate-x-1/2 z-10 h-[580px] object-contain drop-shadow-lg"
+          />
+        </div>
+        <div className='flex lg:hidden relative flex-[1.5] items-end justify-items-center-center select-none'>
+          <img ref={brushRef} src={brushSM} alt="brushSM" loading="eager" fetchPriority="high"  decoding="async" 
+              className="right-2 absolute top-0 w-[350px] z-0" />
+              <img
+            ref={avatarRef}
+            src={avatarSM}
+            alt="personelPhoto"
+            width={250}
+            height={318}
+            loading="eager"  
+            fetchPriority="high"
+            decoding="async"
+            className="block lg:hidden relative left-[120px] bottom-0 -translate-x-1/2 z-10 h-[380px] object-contain drop-shadow-lg"
           />
         </div>
 
