@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState } from "react";
+interface LoaderProps {
+  duration?: number;
+  onComplete: () => void;
+}
 
-const Loader = ({
-  duration = 1000,
-}) => {
+const Loader = ({ duration = 1000, onComplete }: LoaderProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const rafRef = useRef<number | null>(null);
 
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), duration);
+    const timer = setTimeout(() =>{ setVisible(false) , onComplete?.();}, duration);
     return () => clearTimeout(timer);
   }, [duration]);
 

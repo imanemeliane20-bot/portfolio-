@@ -19,7 +19,7 @@ const socialIcons: Record<string, JSX.Element> = {
   linkedin: <BiLogoLinkedin />,
 };
 
-export default function Hero() {
+export default function Hero({ ready = false }: { ready?: boolean }) {
   const { greeting, name, typeAnimation, tagline, experience, email, location, cv, socials } = HeroData;
   const sequence = typeAnimation.flatMap((text) => [text, 2000]);
 
@@ -39,6 +39,7 @@ export default function Hero() {
 
   
   useEffect(() => {
+     if (!ready) return;
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "elastic.out(1, 0.6)" } });
       if(paragraph.current){
@@ -167,7 +168,7 @@ tl
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [ready]);
 
   // Split text into .word spans
   const splitWords = (text: string) =>

@@ -20,7 +20,7 @@ const Footer = lazy(() => import("./elements/Footer"));
 
 function App() {
   const [ready, setReady] = useState(false);
-
+;
   useEffect(() => {
     let lenis: Lenis | null = null;
     let rafId: number | null = null;
@@ -52,12 +52,7 @@ function App() {
     idle(startLenis);
 
     // ✅ delay heavy rendering
-    const idleRender =
-      window.requestIdleCallback ||
-      ((cb: any) => setTimeout(cb, 1));
-
-    idleRender(() => setReady(true));
-
+ 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
       if (lenis) {
@@ -71,12 +66,12 @@ function App() {
   return (
     <div>
       <Suspense fallback={null}>
-        <Loader duration={2660} />
+        <Loader duration={2660} onComplete={() => setReady(true)} />
       </Suspense>
 
       <div className="min-h-screen bg-background flex flex-col">
          <Nav />
-          <Hero />
+          <Hero ready={ready} />
 
       
          
