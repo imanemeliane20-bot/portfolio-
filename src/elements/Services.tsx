@@ -1,6 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FolderCode, Server } from "lucide-react";
 import ServicesData from "../Data/ServiceSection.json";
+import gsap from "gsap";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 // Custom hook for count-up animation
 function useCountUp(target: number, duration: number = 1500, trigger: boolean = true) {
@@ -86,22 +92,52 @@ const Services = () => {
   // animateKey changes every time selected changes, re-triggering the animation
   const [animateKey, setAnimateKey] = useState(0);
   const active = servicing[selected];
-
+  const btnRef=useRef<HTMLDivElement>(null);
+  const textsRef = useRef<HTMLDivElement>(null);
   const handleSelect = (i: number) => {
     setSelected(i);
     setAnimateKey((k) => k + 1);
   };
+useGSAP(()=>{
+  if(!btnRef.current || !textsRef.current)return;
+  const btnIndicator=btnRef.current.querySelectorAll('.btnDiv');
+  gsap.set(btnIndicator ,{opacity:0 , y:80});
+  gsap.set(textsRef.current,{opacity:0, x:80});
 
+  gsap.to(btnIndicator,{
+    opacity:1,
+    y:0,
+    stagger:0.5,
+    ease:"power1.out",
+    duration:0.1,
+    scrollTrigger:{
+      trigger:btnRef.current,
+      start:"top 80%",
+    }
+  });
+
+  gsap.to(textsRef.current,{
+    opacity: 1,
+    x:0,
+    ease: "power2.out",
+    duration:0.5,
+    scrollTrigger:{
+      trigger:textsRef.current,
+      start:"top 80%",
+    }
+  });
+
+},[])
   return (
     <section id="services" className="relative bg-background-sec lg:px-36">
       <div className="lg:grid lg:grid-cols-2 items-center px-6 py-20">
         {/* LEFT — clickable cards */}
-        <div className="flex flex-col gap-4 lg:pr-24 lg:w-auto lg:justify-self-end">
+        <div ref={btnRef} className="mainDiv flex flex-col gap-4 lg:pr-24 lg:w-auto lg:justify-self-end">
           {servicing.map((service, i) => (
             <div
               key={i}
               onClick={() => handleSelect(i)}
-              className={`flex items-center gap-5 rounded-2xl pl-6 pr-10 py-6 shadow-sm cursor-pointer transition-all duration-300 ${
+              className={`btnDiv flex items-center gap-5 rounded-2xl pl-6 pr-10 py-6 shadow-sm cursor-pointer transition-all duration-300 ${
                 selected === i
                   ? "bg-tertiary scale-[1.02]"
                   : "bg-background text-secondary"
@@ -130,6 +166,7 @@ const Services = () => {
 
         {/* RIGHT — dynamic content based on selected card */}
         <div
+        ref={textsRef}
           key={selected}
           className="flex flex-col gap-6 mt-12 lg:mt-0 animate-fade-in"
         >

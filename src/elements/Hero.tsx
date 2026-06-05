@@ -29,6 +29,7 @@ export default function Hero() {
   const avatarRef     = useRef<HTMLImageElement>(null);
   const brushRef      = useRef<HTMLImageElement>(null);
   const emailRef      = useRef<HTMLDivElement>(null);
+  const paragraph =useRef<HTMLParagraphElement>(null);
   const locationRef   = useRef<HTMLDivElement>(null);
   const expRef        = useRef<HTMLDivElement>(null);
   const cvBtnDesktop  = useRef<HTMLButtonElement>(null);
@@ -40,6 +41,19 @@ export default function Hero() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "elastic.out(1, 0.6)" } });
+      if(paragraph.current){
+        const para =paragraph.current.querySelectorAll('.word');
+      tl.from(para,{
+        opacity:0,
+        y:10,
+        duration:0.7,
+        ease:"power2.out",
+        stagger:{
+          each:0.1,  
+        }
+      })
+      }
+      
 
       // ── Heading: greeting word by word ──
       if (greetingRef.current) {
@@ -64,8 +78,8 @@ export default function Hero() {
       // ── Brush: scale + rotate spring ──
       if (brushRef.current) {
         tl.fromTo(brushRef.current,
-          { opacity: 0, scale: 0.4, rotation: -20 },
-          { opacity: 1, scale: 1, rotation: 0, duration: 1.4, ease: "elastic.out(1, 0.5)" },
+          { opacity: 0, scale: 0, rotation: -20 },
+          { opacity: 1, scale: 1, rotation: 0, duration: 1.4, ease: "power2.out" },
           0.1
         );
       }
@@ -82,16 +96,16 @@ export default function Hero() {
       // ── Email ──
       if (emailRef.current) {
         tl.fromTo(emailRef.current,
-          { opacity: 0, x: -50 },
+          { opacity: 0, x: -20 },
           { opacity: 1, x: 0, duration: 1, ease: "elastic.out(1, 0.7)" },
-          0.7
+          0.9
         );
       }
 
       // ── Location ──
       if (locationRef.current) {
         tl.fromTo(locationRef.current,
-          { opacity: 0, x: -50 },
+          { opacity: 0, x: -20 },
           { opacity: 1, x: 0, duration: 1, ease: "elastic.out(1, 0.7)" },
           0.85
         );
@@ -106,27 +120,29 @@ export default function Hero() {
         );
       }
 
-      // ── CV buttons ──
-      [cvBtnDesktop.current, cvBtnMobile.current].forEach((btn, i) => {
-        if (!btn) return;
-        tl.fromTo(btn,
-          { opacity: 0, scale: 0.5, y: 30 },
-          { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: "powerinOut1.out(1, 0.5)" },
-          0.4 + i * 0.1
-        );
-      });
+     // ── CV buttons ──
+[cvBtnDesktop.current, cvBtnMobile.current].forEach((btn, i) => {
+  if (!btn) return;
 
-      // ── Socials: stagger bounce ──
-      [socialsDesktop.current, socialsMobile.current].forEach((container) => {
-        if (!container) return;
-        const icons = container.querySelectorAll('.social-icon');
-        tl.fromTo(icons,
-          { opacity: 0, scale: 0, rotation: -180 },
-          { opacity: 1, scale: 1, rotation: 0, duration: 0.9, stagger: 0.1, ease: "elastic.out(1, 0.5)" },
-          1.0
-        );
-      });
- 
+gsap.set(btn, { transformOrigin: "bottom center" });
+
+const tl = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+tl
+  // jump up
+  .to(btn, { y: -10, duration: 0.25, ease: "power2.out" })
+  // squash on land
+  .to(btn, { y: 0 , duration: 0.15 , ease: "power2.in" })
+  // sway left
+  .to(btn, { rotate: -12, scaleY: 1, scaleX: 1, duration: 0.18, ease: "power2.out" })
+  // sway right
+  .to(btn, { rotate: 12, duration: 0.18, ease: "power2.out" })
+  // sway left smaller
+  .to(btn, { rotate: -6, duration: 0.14, ease: "power2.out" })
+  // sway right smaller
+  .to(btn, { rotate: 6, duration: 0.14, ease: "power2.out" })
+  // settle
+  .to(btn, { rotate: 0, duration: 0.5, ease: "elastic.out(1.2, 0.4)" });
+});
       // ── Hover bounce on CV buttons ──
       [cvBtnDesktop.current, cvBtnMobile.current].forEach((btn) => {
         if (!btn) return;
@@ -142,10 +158,10 @@ export default function Hero() {
       const allIcons = document.querySelectorAll('.social-icon');
       allIcons.forEach((icon) => {
         icon.addEventListener('mouseenter', () => {
-          gsap.to(icon, { scale: 1.25, rotation: 10, duration: 0.35, ease: "elastic.out(2, 0.5)" });
+          gsap.to(icon, { scale: 1.02, rotation: -10, duration: 0.1, ease: "sine.out" });
         });
         icon.addEventListener('mouseleave', () => {
-          gsap.to(icon, { scale: 1, rotation: 0, duration: 0.4, ease: "elastic.out(1, 0.6)" });
+          gsap.to(icon, { scale: 1, rotation: 0, duration: 0.15, ease: "elastic.out(1, 0.6)" });
         });
       });
     });
@@ -253,7 +269,7 @@ export default function Hero() {
 
         {/* CV button mobile */}
         <div className="lg:hidden flex flex-col items-center gap-2 py-4">
-          <button ref={cvBtnMobile} className="rounded-full transition-all h-14 min-w-50 px-6 tracking-widest bg-select hover:bg-tertiary-hover text-secondary uppercase font-extrabold text-base text-center">
+          <button ref={cvBtnMobile} className="rounded-full transition-all h-14 min-w-20 px-6 tracking-widest bg-select hover:bg-tertiary-hover text-secondary uppercase font-extrabold text-base text-center">
             <div className='flex items-center justify-center font-caveat gap-2'>
               <span >{cv.display}</span>
               <ArrowDownToLine width={25} height={25} />
@@ -288,11 +304,14 @@ export default function Hero() {
 
         {/* Right column */}
         <div className="hidden lg:flex flex-col justify-between flex-1 items-end pt-36 text-right z-10">
-          <p className="text-base text-secondary font-medium leading-relaxed max-w-[220px]">
-            {tagline}
+          <p ref={paragraph} className="text-base text-secondary font-medium leading-relaxed max-w-[220px]">
+             {tagline.split(" ").map((word, i) => (
+            <span key={i} className="word inline-block mr-[0.25em]">{word} </span>
+            ))}
           </p>
+
           <div className="flex flex-col items-center gap-2 lg:pb-44">
-            <button ref={cvBtnDesktop} className="rounded-full hover:scale-[1.02] transition-all h-14 min-w-50 px-6 tracking-widest bg-select hover:bg-tertiary-hover text-secondary uppercase font-extrabold text-base text-center">
+            <button ref={cvBtnDesktop} className="rounded-full h-14 min-w-20 px-6 tracking-widest bg-select transition-colors hover:bg-tertiary-hover text-secondary uppercase font-extrabold text-base text-center">
               <div className='flex items-center font-caveat justify-center gap-2'>
                 <span>{cv.display}</span>
                 <ArrowDownToLine width={25} height={25} />

@@ -5,20 +5,68 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ExperienceData from "../Data/Experience_certificationSection.json";
 import coursera from "../assets/course.webp";
 import PECB from "../assets/PECB.webp";
+import { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Experiences = () => {
 const { experiences, certifications } = ExperienceData;
-
-
-
+const titleRef = useRef<HTMLParagraphElement>(null);
+const certifRef =useRef<HTMLParagraphElement>(null);
+const divRef =useRef<HTMLDivElement>(null);
 const logoMap: Record<string, string> = {
   coursera,
   PECB,
 };
-
+  
   useGSAP(() => {
+  
+    if(!titleRef.current) return;
+    const ttl=titleRef.current.querySelectorAll(".word");
+    gsap.set(ttl,{opacity:0 ,y:100});
+    gsap.to(ttl,{
+      opacity:1,
+      y:0,    
+      duration:0.4,
+      stagger:0.08,
+      ease:"power3.out",
+      scrollTrigger:{
+        trigger:ttl,
+        start:"top 80%"        
+
+      }
+    })
+    if(!certifRef.current) return
+    const cert=certifRef.current.querySelectorAll(".word");
+    gsap.set(cert,{opacity:0 ,y:100});
+
+    gsap.to(cert,{
+      opacity:1,
+      y:0,
+      duration:0.4,
+      stagger:0.08,
+      ease:"power3.out",
+      scrollTrigger:{
+        trigger:cert,
+        start:"top 80%",
+
+      }
+      
+    })
+    if(!divRef.current) return;
+      const divr=divRef.current.querySelectorAll(".card");
+    gsap.set(divr,{opacity:0 , y:150});
+    gsap.to(divr,{
+      opacity:1,
+      y:0,
+      duration:0.5,
+      stagger:0.2,
+      ease:"power3.out",
+      scrollTrigger:{
+        trigger:divr,
+        start:"top 80%"
+      }
+    })
     gsap.utils.toArray('.timeline-card').forEach((card: any) => {
       gsap.from(card, {
         xPercent: -100,
@@ -60,21 +108,33 @@ const logoMap: Record<string, string> = {
         }
       })
     })
+
+
   }, [])
   return (
+  
     <>
     <section
       id='experience'
       className='w-full px-5 md:px-10 overflow-hidden md:mt-30 mt-20 lg:px-36'
     >
       <div className='w-full h-full md:px-20 px-5 '>
-        <p className="font-semibold font-caveat md:text-5xl text-4xl text-center text-accent"
+        <p ref={titleRef} className="title font-semibold font-caveat md:text-5xl text-4xl text-center text-accent"
           
         >
           <span className="pr-3 text-secondary">
-            {experiences.sectionTitle.prefix}
+            {experiences.sectionTitle.prefix.split(" ").map((word ,i)=>(
+              <span key={i} className="word inline-block mr-[0.25em]">
+                {word}
+              </span>
+            ))}
           </span>
-            {experiences.sectionTitle.highlight}
+          
+            {experiences.sectionTitle.highlight.split(" ").map((word,i)=>(
+              <span key={i} className="word inline-block mr-[0.25em]">
+                {word}
+              </span>
+            ))}
            
         </p>
       </div>
@@ -142,24 +202,32 @@ const logoMap: Record<string, string> = {
     </section>
 
     <section
-      className="w-full px-5 md:px-10 lg:px-36 mt-20 md:mt-30 overflow-hidden"
+      className="w-full px-5 md:px-10 lg:px-36 mt-20 md:mt-30"
     >
       {/* Heading */}
       <div className="flex flex-col items-center mb-10">
-        <p className="text-5xl text-secondary font-caveat font-semibold mb-2"
+        <p ref={certifRef} className="text-5xl text-secondary font-caveat font-semibold mb-2"
         >
-         {certifications.sectionTitle.prefix} <span className="text-accent">
-          {certifications.sectionTitle.highlight}
+         {certifications.sectionTitle.prefix.split(" ").map((word,i)=>(
+          <span key={i} className="word inline-block mr-[0.25em]">
+            {word}
+          </span>
+         ))} <span className="text-accent">
+          {certifications.sectionTitle.highlight.split(' ').map((word ,i)=>(
+            <span key={i} className="word inline-block mr-[0.25em]">
+                {word}
+            </span>
+          ))}
           </span> 
         </p>
       </div>
  
       {/* Grid */}
-      <div className="grid grid-cols-1  md:grid-cols-3 gap-6">
+      <div ref={divRef} className="grid grid-cols-1  md:grid-cols-3 gap-6">
         {certifications.cards.map((card) => (
           <div
             key={card.id}
-            className="flex items-start gap-4 rounded-xl p-5 transition-colors hover:scale-[1.02] bg-background-sec duration-200"
+            className="card flex items-start gap-4 rounded-xl p-5 transition-colors hover:scale-[1.02] bg-background-sec duration-200"
           >
             {/* Logo */}
             <div

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import StackIcon from "tech-stack-icons";
 
 const TechIcon = ({ name, size = 50, className  }: {
@@ -10,6 +10,7 @@ const TechIcon = ({ name, size = 50, className  }: {
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const typeRef=useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsLoaded(true), 100);
@@ -57,6 +58,7 @@ const TechIcon = ({ name, size = 50, className  }: {
  
   return (
     <div
+      ref={typeRef}
       className={` flex flex-col items-center justify-center ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -78,6 +80,7 @@ const TechIcon = ({ name, size = 50, className  }: {
             transition: 'all 0.3s ease-in-out',
             filter:    isHovered ? 'drop-shadow(0 0 8px rgba(255,255,255,25))' : 'none',
             animation: isHovered ? 'pulse-wave 2s ease-in-out infinite' : 'none',
+          
           }}
         />
       </div>
