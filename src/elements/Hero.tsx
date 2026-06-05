@@ -121,7 +121,7 @@ export default function Hero() {
       }
 
      // ── CV buttons ──
-[cvBtnDesktop.current, cvBtnMobile.current].forEach((btn, i) => {
+[cvBtnDesktop.current, cvBtnMobile.current].forEach((btn) => {
   if (!btn) return;
 
 gsap.set(btn, { transformOrigin: "bottom center" });
