@@ -80,7 +80,7 @@ function Carousel3D({ items, activeTab, onTabChange }: CarouselProps) {
     return () => ctx.revert();
   }, [items]);
 
-  useGSAP(() => {}, []);
+
 
   return (
     <div
@@ -364,16 +364,38 @@ function AllProjects({ items, onClose }: AllProjectsProps) {
 const Projects = () => {
   const [activeTab, setActiveTab] = useState("frontend");
   const [showAll, setShowAll] = useState(false);
+const htwoRef =useRef<HTMLHeadingElement>(null);
 
+useGSAP(()=>{
+  if (!htwoRef.current) return
+  const htwo =htwoRef.current.querySelectorAll(".word");
+  gsap.from(htwo,{
+    opacity:0,
+    y:120,
+    stagger:0.08,
+    ease:'back.out',
+    scrollTrigger:{
+      trigger:htwo,
+      start:"top 80%"
+    }
+  })
+},[])
   const tabProjects =
     activeTab === "all"
       ? projects
       : projects.filter((p) => p.category === activeTab);
 
-  const handleTabChange = (cat: string) => {
-    setActiveTab(cat);
-    setShowAll(false);
-  };
+ const handleTabChange = (cat: string) => {
+  setActiveTab(cat);
+  setShowAll(false);
+  // give DOM time to update then recalculate all trigger positions
+  setTimeout(() => ScrollTrigger.refresh(), 100);
+};
+useEffect(() => {
+  // when showAll changes or activeTab changes, refresh trigger positions
+  const t = setTimeout(() => ScrollTrigger.refresh(), 100);
+  return () => clearTimeout(t);
+}, [showAll, activeTab]);
 
   return (
     <motion.section
@@ -386,12 +408,20 @@ const Projects = () => {
 
         {/* Header */}
         <div className="mb-10 xl:mb-14">
-          <h2
+          <h2 ref={htwoRef}
             className="h2 flex font-caveat items-center justify-center text-3xl lg:text-5xl text-accent whitespace-nowrap font-bold"
             
           >
-            <span className="text-secondary pr-3">{sectionTitle.prefix}</span>
-            {sectionTitle.highlight}
+            <span className="text-secondary pr-3">{sectionTitle.prefix.split(" ").map((word ,i )=>(
+              <span key={i} className="word inline-block mr-[0.25em]">
+                {word}
+              </span>
+            ))}</span>
+            {sectionTitle.highlight.split(" ").map((word,i)=>(
+              <span key={i} className="word inline-block mr-[<0.25em]">
+                {word}
+              </span>
+            ))}
           </h2>
         </div>
 
@@ -453,6 +483,7 @@ const Projects = () => {
             </motion.div>
           ) : (
             <motion.div
+  
               key={`carousel-${activeTab}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

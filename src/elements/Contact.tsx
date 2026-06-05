@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ContactData from "../Data/Contact.json";
+import gsap from 'gsap';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import { useGSAP } from "@gsap/react";
 
+gsap.registerPlugin(ScrollTrigger);
 const { headline, subtext, form, success, contact } = ContactData;
 
 
 export default function Contact() {
+  const leftRef=useRef<HTMLDivElement>(null);
+  const rightRef=useRef<HTMLDivElement>(null);
+
   const [formState, setFormState] = useState({
     fullName: "",
     email: "",
@@ -39,13 +46,46 @@ export default function Contact() {
   const inputClass =
     "w-full px-4 py-3 rounded-xl text-sm text-primary placeholder-primary bg-white/[0.06] border border-white/[0.08] outline-none transition-all duration-200 focus:border-accent focus:ring-2 focus:ring-accent resize-none leading-relaxed";
 
+    useGSAP(()=>{
+      if(!leftRef.current || !rightRef.current) return
+      gsap.from(leftRef.current,{
+        opacity:0,
+        x:-100,
+        ease:"back.out",
+        duration:1,
+        scrollTrigger:{
+          trigger:leftRef.current,
+          start:'top center',
+          refreshPriority: -1            
+        }
+      })
+
+        gsap.from(rightRef.current,{
+        opacity:0,
+        x:100,
+        ease:"back.out",
+        duration:0.5,
+        scrollTrigger:{
+          trigger:rightRef.current,
+          start:'top center',
+          refreshPriority: -1
+        }
+      })
+    },[])
+  
+useEffect(() => {
+  // Wait for all ScrollTriggers (including the carousel pin) to settle,
+  // then recalculate Contact's own trigger positions
+  const t = setTimeout(() => ScrollTrigger.refresh(), 500);
+  return () => clearTimeout(t);
+}, []);
   return (
     <section id="contact" className="min-h-screen w-full flex items-center bg-background-sec">
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         {/* ── LEFT ── */}
-        <div className="font-caveat">
+        <div ref={leftRef} className="font-caveat">
           <h2 className="text-7xl lg:text-9xl font-bold text-white tracking-tight">
             {headline.line1}
             <br />
@@ -64,7 +104,7 @@ export default function Contact() {
         </div>
 
         {/* ── RIGHT: form card ── */}
-        <div className="rounded-2xl p-8 border border-white/10 bg-white/[0.04] backdrop-blur-xl">
+        <div ref={rightRef} className="rounded-2xl p-8 border border-white/10 bg-white/[0.04] backdrop-blur-xl">
 
           {sent ? (
             /* ── SUCCESS STATE ── */
